@@ -24,6 +24,10 @@ module.exports = {
     ]
   },
 
+  server: {
+    port: 3001
+  },
+
   /*
   ** Customize the progress-bar color
   */
@@ -32,7 +36,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~/assets/style/app.styl'],
+  css: ['~/assets/style/app.styl', '~/assets/main.css'],
 
   /*
   ** Plugins to load before mounting the App
@@ -50,6 +54,7 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
+    baseURL: 'http://localhost:3000/api/'
     // See https://github.com/nuxt-community/axios-module#options
   },
 
