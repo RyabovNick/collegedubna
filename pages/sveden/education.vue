@@ -23,12 +23,6 @@ h2 {
 </style>
 
 <style>
-.icon-size {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-}
-
 table.v-table thead th {
   white-space: initial;
 }
@@ -57,6 +51,8 @@ table.v-table thead th {
         <v-data-table
           :headers="headersEduop"
           :items="$store.state.education.eduop"
+          expand
+          :search="searchEduop"
           class="elevation-2"
           rows-per-page-text="Записей на странице"
         >
@@ -103,14 +99,6 @@ table.v-table thead th {
               </a>
             </td>
             <td itemprop="educationAnnotation" class="text-xs-center">
-              <a :href="`/files/${props.item.educationAnnotation}`" target="_blank">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/open.svg"
-                  alt="Открыть"
-                  title="Открыть в новом окне"
-                >
-              </a>
               <a :href="`/files/${props.item.educationAnnotation}`" download target="_self">
                 <img
                   class="icon-size"

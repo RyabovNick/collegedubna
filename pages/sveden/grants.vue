@@ -5,6 +5,11 @@
 }
 </style>
 
+<style>
+table.v-table thead th {
+  white-space: initial;
+}
+</style>
 
 <template>
   <v-app>
@@ -18,7 +23,6 @@
       <v-data-table
         :headers="headersGraduatejob"
         :items="$store.state.grants.graduatejob"
-        hide-actions
         class="elevation-1"
       >
         <template slot="items" slot-scope="props">

@@ -33,6 +33,17 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      headers: [
+        {
+          text: 'ФИО',
+          align: 'left',
+          sortable: false,
+          value: 'fio'
+        },
+        { text: 'Должность', sortable: false, value: 'post' },
+        { text: 'Телефон', sortable: false, value: 'telephone' },
+        { text: 'Почта', sortable: false, value: 'email' }
+      ],
       loading: false,
       errored: false
     }

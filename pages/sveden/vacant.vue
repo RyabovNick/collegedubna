@@ -20,6 +20,11 @@ h2 {
 }
 </style>
 
+<style>
+table.v-table thead th {
+  white-space: initial;
+}
+</style>
 
 <template>
   <v-app>
@@ -43,7 +48,6 @@ h2 {
           :headers="headers"
           :items="$store.state.vacant.vacant"
           expand
-          hide-actions
           :search="search"
           class="elevation-2"
         >
