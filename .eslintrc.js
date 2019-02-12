@@ -20,6 +20,7 @@ module.exports = {
           allowFirstLine: false
         }
       }
-    ]
+    ],
+    'no-console': 'off'
   }
 }

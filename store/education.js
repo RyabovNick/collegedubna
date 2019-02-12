@@ -3,7 +3,12 @@ export const state = () => ({
   eduaccred: [],
   chislen: [],
   priem: [],
-  perevod: []
+  perevod: [],
+  eduopErr: false,
+  eduaccredErr: false,
+  chislenErr: false,
+  priemErr: false,
+  perevodErr: false
 })
 
 export const getters = {
@@ -21,6 +26,21 @@ export const getters = {
   },
   perevod(state) {
     return state.perevod
+  },
+  eduopErr(state) {
+    return state.eduopErr
+  },
+  eduaccredErr(state) {
+    return state.eduaccredErr
+  },
+  chislenErr(state) {
+    return state.chislenErr
+  },
+  priemErr(state) {
+    return state.priemErr
+  },
+  perevodErr(state) {
+    return state.perevodErr
   }
 }
 
@@ -49,6 +69,21 @@ export const actions = {
     const data = await this.$axios.$get('perevod')
     commit('setPerevod', data)
     return data
+  },
+  async fetchEduopErr({ commit }) {
+    await commit('setEduopErr', true)
+  },
+  async fetchEduaccredErr({ commit }) {
+    await commit('setEduaccredErr', true)
+  },
+  async fetchChislenErr({ commit }) {
+    await commit('setChislenErr', true)
+  },
+  async fetchPriemErr({ commit }) {
+    await commit('setPriemErr', true)
+  },
+  async fetchPerevodErr({ commit }) {
+    await commit('setPerevodErr', true)
   }
 }
 
@@ -67,5 +102,20 @@ export const mutations = {
   },
   setPerevod(state, perevod) {
     state.perevod = perevod
+  },
+  setEduopErr(state, value) {
+    state.eduopErr = value
+  },
+  setEduaccredErr(state, value) {
+    state.eduaccredErr = value
+  },
+  setChislenErr(state, value) {
+    state.chislenErr = value
+  },
+  setPriemErr(state, value) {
+    state.priemErr = value
+  },
+  setPerevodErr(state, value) {
+    state.perevodErr = value
   }
 }

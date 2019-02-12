@@ -17,6 +17,8 @@ table.v-table {
 
 h2 {
   text-align: center;
+  padding-bottom: 1em;
+  padding-top: 1em;
 }
 </style>
 
@@ -38,11 +40,10 @@ table.v-table thead th {
   <v-app>
     <h1>Образование</h1>
     <h2>Информация по образовательным программам</h2>
-    <section v-if="errored_eduop">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.education.eduopErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
-      <div v-if="loading_eduop">Загрузка...</div>
       <v-card>
         <v-card-title>
           <v-text-field
@@ -56,10 +57,8 @@ table.v-table thead th {
         <v-data-table
           :headers="headersEduop"
           :items="$store.state.education.eduop"
-          expand
-          hide-actions
-          :search="searchEduop"
           class="elevation-2"
+          rows-per-page-text="Записей на странице"
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
@@ -162,13 +161,11 @@ table.v-table thead th {
         </v-data-table>
       </v-card>
     </section>
-    <br>
     <h2>Информация о сроке действия государственной аккредитации образовательной программы, о языках, на которых осуществляется образование (обучение)</h2>
-    <section v-if="errored_eduaccred">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.education.eduaccredErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
-      <div v-if="loading_eduaccred">Загрузка...</div>
       <v-card>
         <v-card-title>
           <v-text-field
@@ -183,9 +180,9 @@ table.v-table thead th {
           :headers="headersEduaccred"
           :items="$store.state.education.eduaccred"
           expand
-          hide-actions
           :search="searchEduaccred"
           class="elevation-2"
+          rows-per-page-text="Записей на странице"
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
@@ -198,13 +195,11 @@ table.v-table thead th {
         </v-data-table>
       </v-card>
     </section>
-    <br>
     <h2>Информация о численности обучающихся по реализуемым образовательным программам</h2>
-    <section v-if="errored_chislen">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.education.chislenErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
-      <div v-if="loading_chislen">Загрузка...</div>
       <v-card>
         <v-card-title>
           <v-text-field
@@ -219,9 +214,9 @@ table.v-table thead th {
           :headers="headersChislen"
           :items="$store.state.education.chislen"
           expand
-          hide-actions
           :search="searchChislen"
           class="elevation-2"
+          rows-per-page-text="Записей на странице"
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
@@ -236,13 +231,11 @@ table.v-table thead th {
         </v-data-table>
       </v-card>
     </section>
-    <br>
     <h2>Информация о результатах приема</h2>
-    <section v-if="errored_priem">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.education.priemErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
-      <div v-if="loading_priem">Загрузка...</div>
       <v-card>
         <v-card-title>
           <v-text-field
@@ -257,9 +250,9 @@ table.v-table thead th {
           :headers="headersPriem"
           :items="$store.state.education.priem"
           expand
-          hide-actions
           :search="searchPriem"
           class="elevation-2"
+          rows-per-page-text="Записей на странице"
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
@@ -274,13 +267,11 @@ table.v-table thead th {
         </v-data-table>
       </v-card>
     </section>
-    <br>
     <h2>Информация о результатах перевода, восстановления и отчисления</h2>
-    <section v-if="errored_perevod">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.education.perevodErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
-      <div v-if="loading_perevod">Загрузка...</div>
       <v-card>
         <v-card-title>
           <v-text-field
@@ -295,9 +286,9 @@ table.v-table thead th {
           :headers="headersPerevod"
           :items="$store.state.education.perevod"
           expand
-          hide-actions
           :search="searchPerevod"
           class="elevation-2"
+          rows-per-page-text="Записей на странице"
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
@@ -534,27 +525,50 @@ export default {
           value: 'numberExpPerevod'
         }
       ],
-      loading_priem: false,
-      errored_priem: false,
-      loading_eduaccred: false,
-      errored_eduaccred: false,
-      loading_perevod: false,
-      errored_perevod: false,
-      loading_eduop: false,
-      errored_eduop: false,
-      loading_chislen: false,
-      errored_chislen: false
+      errMessage:
+        'Приносим извинения, произошла ошибка при загрузке данных. Пожалуйста, повторите запрос позднее.'
     }
   },
   async fetch({ store }) {
-    await store.dispatch('education/fetchEduaccred')
-    await store.dispatch('education/fetchEduop')
-    await store.dispatch('education/fetchChislen')
-    await store.dispatch('education/fetchPriem')
-    await store.dispatch('education/fetchPerevod')
+    try {
+      await store.dispatch('education/fetchEduop')
+    } catch {
+      await store.dispatch('education/fetchEduopErr')
+    }
+    try {
+      await store.dispatch('education/fetchEduaccred')
+    } catch {
+      await store.dispatch('education/fetchEduaccredErr')
+    }
+    try {
+      await store.dispatch('education/fetchChislen')
+    } catch (err) {
+      await store.dispatch('education/fetchChislenErr')
+    }
+    try {
+      await store.dispatch('education/fetchPriem')
+    } catch {
+      await store.dispatch('education/fetchPriemErr')
+    }
+    try {
+      await store.dispatch('education/fetchPerevod')
+    } catch {
+      await store.dispatch('education/fetchPerevodErr')
+    }
   },
   computed: {
-    ...mapGetters(['eduaccred', 'eduop', 'chislen', 'priem', 'perevod'])
+    ...mapGetters([
+      'eduaccred',
+      'eduop',
+      'chislen',
+      'priem',
+      'perevod',
+      'eduopErr',
+      'eduaccredErr',
+      'chislenErr',
+      'priemErr',
+      'perevodErr'
+    ])
   }
 }
 </script>
