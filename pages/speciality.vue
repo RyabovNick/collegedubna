@@ -4,7 +4,7 @@
 
 <template>
   <v-app>
-    <vue-markdown class="md-helper" :source="$store.state.page.page.content"/>
+    <vue-markdown class="md-helper">{{ $store.state.speciality.page.content }}</vue-markdown>
   </v-app>
 </template>
 
@@ -18,9 +18,9 @@ export default {
   },
   async fetch({ store }) {
     try {
-      await store.dispatch('page/fetchPage', '5')
+      await store.dispatch('speciality/fetchPage', '5')
     } catch {
-      await store.dispatch('page/fetchPageErr')
+      await store.dispatch('speciality/fetchPageErr')
     }
   },
   computed: {

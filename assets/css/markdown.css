@@ -2,7 +2,7 @@
     so we needed to use .md-helper
 */
 .md-helper >>> h1 {
-  font-size: 2.5em;
+  font-size: 2em;
   text-align: center;
 }
 
@@ -65,7 +65,9 @@
 }
 
 .md-helper >>> img {
-  width: 100%;
+  width: 80%;
+  display: block;
+  margin: auto;
 }
 
 .md-helper >>> li {

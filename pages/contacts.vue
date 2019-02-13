@@ -1,10 +1,18 @@
 <style scoped>
 @import '~/assets/css/markdown.css';
+
+.md-helper {
+  margin-bottom: 2em;
+}
+.md-helper >>> p {
+  text-align: center;
+  line-height: 2.1;
+}
 </style>
 
 <template>
   <v-app>
-    <vue-markdown class="md-helper">{{ $store.state.abitur.page.content }}</vue-markdown>
+    <vue-markdown class="md-helper">{{ $store.state.contacts.page.content }}</vue-markdown>
   </v-app>
 </template>
 
@@ -18,9 +26,9 @@ export default {
   },
   async fetch({ store }) {
     try {
-      await store.dispatch('abitur/fetchPage', '1')
+      await store.dispatch('contacts/fetchPage', '4')
     } catch {
-      await store.dispatch('abitur/fetchPageErr')
+      await store.dispatch('contacts/fetchPageErr')
     }
   },
   computed: {

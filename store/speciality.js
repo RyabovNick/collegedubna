@@ -1,5 +1,3 @@
-/** template for pages storing in db */
-
 export const state = () => ({
   page: [],
   pageErr: false

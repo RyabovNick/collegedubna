@@ -2,6 +2,14 @@
 .v-footer {
   text-align: center;
 }
+
+.v-list__tile {
+  padding: 0 12px;
+}
+
+.v-list__tile__action {
+  min-width: 38px;
+}
 </style>
 
 

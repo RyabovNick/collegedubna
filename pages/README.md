@@ -32,3 +32,33 @@ TODO objects: Check styles. Maybe in the future change 1st table loading. Now it
 TODO style from every page to main.css!!!
 
 TODO dynamic pages need to check if current architecture working good (or need create store for every page)
+
+TODO environment
+
+TODO virtual_tour galleria from database
+
+TODO availability links to docs on local
+
+TODO road_map links to docs on local
+
+TODO normative list of links on external pages
+
+TODO equipment links to docs on local
+
+TODO career_guidance links on other pages/sites
+
+part career_guidance - TODO virtual_test text
+
+TODO social_support text, link on files
+
+TODO employment links on other pages/sites
+
+part employment:
+
+    TODO normative links
+
+    TODO responsibilities links/text
+
+    TODO rights links/text
+
+    TODO work links/text
