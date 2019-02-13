@@ -9,22 +9,22 @@
 .md-helper >>> h2 {
   font-size: 1.7em;
   text-align: center;
-  padding-bottom: 0.5em;
-  padding-top: 0.5em;
+  padding-bottom: 1em;
+  padding-top: 1em;
 }
 
 .md-helper >>> h3 {
   font-size: 1.4em;
   text-align: center;
-  padding-bottom: 0.3em;
-  padding-top: 0.3em;
+  padding-bottom: 0.8em;
+  padding-top: 0.8em;
 }
 
 .md-helper >>> h4 {
   font-size: 1em;
   text-align: center;
-  padding-bottom: 0.15em;
-  padding-top: 0.15em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
 }
 
 .md-helper >>> h5 {
@@ -41,7 +41,9 @@
 }
 
 .md-helper >>> table {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
   border-collapse: collapse;
 }
 
@@ -68,6 +70,11 @@
   width: 80%;
   display: block;
   margin: auto;
+}
+
+.md-helper >>> ol,
+ul {
+  padding-left: 70px;
 }
 
 .md-helper >>> li {

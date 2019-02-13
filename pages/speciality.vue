@@ -18,7 +18,7 @@ export default {
   },
   async fetch({ store }) {
     try {
-      await store.dispatch('speciality/fetchPage', '5')
+      await store.dispatch('speciality/fetchPage', '2')
     } catch {
       await store.dispatch('speciality/fetchPageErr')
     }
