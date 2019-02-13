@@ -1,14 +1,13 @@
 export const state = () => ({
   educode: [],
+  cabs: [],
   eduaccred: [],
   purposelibr: [],
   purposeeios: [],
-  perevod: [],
   educodeErr: false,
   eduaccredErr: false,
   purposelibrErr: false,
-  purposeeiosErr: false,
-  perevodErr: false
+  purposeeiosErr: false
 })
 
 export const getters = {
@@ -42,6 +41,10 @@ export const actions = {
   async fetchEducode({ commit }) {
     const data = await this.$axios.$get('educode')
     commit('setEducode', data)
+    data.forEach(async element => {
+      const cabs = await this.$axios.$get(`cabinets/${element.id}`)
+      commit('setCabs', cabs)
+    })
     return data
   },
   async fetchEduaccred({ commit }) {
@@ -85,6 +88,9 @@ export const mutations = {
   },
   setPurposeeios(state, purposeeios) {
     state.purposeeios = purposeeios
+  },
+  setCabs(state, value) {
+    state.cabs.push(value)
   },
   setEducodeErr(state, value) {
     state.educodeErr = value

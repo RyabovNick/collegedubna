@@ -27,6 +27,6 @@ TODO struct: error if can't loaded, check styles
 
 TODO vacant: error if can't loaded, check styles
 
-TODO objects: import data from text. Add 2 table. Add Server-side
+TODO objects: Check styles. Maybe in the future change 1st table loading. Now its whole data loading.
 
 TODO style from every page to main.css!!!
