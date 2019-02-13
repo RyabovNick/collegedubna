@@ -51,3 +51,5 @@ part employment:
     TODO rights links/text
 
     TODO work links/text
+
+TODO CANT DOWNLOAD AND OPEN FILE IN BROWSER!!!
