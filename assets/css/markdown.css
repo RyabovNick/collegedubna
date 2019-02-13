@@ -1,0 +1,74 @@
+/* vue rendering page after css
+    so we needed to use .md-helper
+*/
+.md-helper >>> h1 {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.md-helper >>> h2 {
+  font-size: 1.7em;
+  text-align: center;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+.md-helper >>> h3 {
+  font-size: 1.4em;
+  text-align: center;
+  padding-bottom: 0.3em;
+  padding-top: 0.3em;
+}
+
+.md-helper >>> h4 {
+  font-size: 1em;
+  text-align: center;
+  padding-bottom: 0.15em;
+  padding-top: 0.15em;
+}
+
+.md-helper >>> h5 {
+  font-size: 1.25em;
+  text-align: left;
+}
+
+.md-helper >>> p {
+  font-size: 16px;
+  text-align: left;
+  line-height: 1.5;
+  margin-bottom: 0;
+  text-indent: 35px;
+}
+
+.md-helper >>> table {
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.md-helper >>> th {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.md-helper >>> td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.md-helper >>> hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.md-helper >>> img {
+  width: 100%;
+}
+
+.md-helper >>> li {
+  font-size: 16px;
+  line-height: 1.5;
+}

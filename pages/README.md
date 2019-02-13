@@ -30,3 +30,5 @@ TODO vacant: error if can't loaded, check styles
 TODO objects: Check styles. Maybe in the future change 1st table loading. Now its whole data loading.
 
 TODO style from every page to main.css!!!
+
+TODO dynamic pages need to check if current architecture working good (or need create store for every page)
