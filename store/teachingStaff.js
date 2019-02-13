@@ -1,10 +1,14 @@
 export const state = () => ({
-  teachers: []
+  teachers: [],
+  teachersErr: false
 })
 
 export const getters = {
   teachers(state) {
     return state.teachers
+  },
+  teachersErr(state) {
+    return state.teachersErr
   }
 }
 
@@ -13,11 +17,17 @@ export const actions = {
     const data = await this.$axios.$get('teachingstaff')
     commit('setTeachers', data)
     return data
+  },
+  async fetchTeachersErr({ commit }) {
+    await commit('setTeachersErr', true)
   }
 }
 
 export const mutations = {
   setTeachers(state, teachers) {
     state.teachers = teachers
+  },
+  setTeachersErr(state, value) {
+    state.teachersErr = value
   }
 }

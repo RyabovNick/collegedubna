@@ -1,10 +1,14 @@
 export const state = () => ({
-  common: []
+  common: [],
+  commonErr: false
 })
 
 export const getters = {
   common(state) {
     return state.common
+  },
+  commonErr(state) {
+    return state.commonErr
   }
 }
 
@@ -13,11 +17,17 @@ export const actions = {
     const data = await this.$axios.$get('common')
     commit('setCommon', data)
     return data
+  },
+  async fetchCommonErr({ commit }) {
+    await commit('setCommonErr', true)
   }
 }
 
 export const mutations = {
   setCommon(state, common) {
     state.common = common
+  },
+  setCommonErr(state, value) {
+    state.commonErr = value
   }
 }

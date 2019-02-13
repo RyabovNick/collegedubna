@@ -29,8 +29,13 @@ table.v-table thead th {
 <template>
   <v-app>
     <h1>Вакантные места</h1>
-    <section v-if="errored">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.vacant.vacantErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
     <section v-else>
       <div v-if="loading">Загрузка...</div>
@@ -170,15 +175,18 @@ export default {
           colspan: 1
         }
       ],
-      loading: false,
-      errored: false
+      loading: false
     }
   },
   async fetch({ store }) {
-    await store.dispatch('vacant/fetchVacant')
+    try {
+      await store.dispatch('vacant/fetchVacant')
+    } catch {
+      await store.dispatch('vacant/fetchVacantErr')
+    }
   },
   computed: {
-    ...mapGetters(['vacant'])
+    ...mapGetters(['vacant', 'vacantErr', 'errMessage'])
   }
 }
 </script>

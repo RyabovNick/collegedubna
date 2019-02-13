@@ -1,8 +1,13 @@
 <template>
   <v-app>
     <h1>Структура и органы управления образовательной организации</h1>
-    <section v-if="errored">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.struct.structErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -44,15 +49,18 @@ export default {
         { text: 'Телефон', sortable: false, value: 'telephone' },
         { text: 'Почта', sortable: false, value: 'email' }
       ],
-      loading: false,
-      errored: false
+      loading: false
     }
   },
   async fetch({ store }) {
-    await store.dispatch('struct/fetchStruct')
+    try {
+      await store.dispatch('struct/fetchStruct')
+    } catch {
+      await store.dispatch('struct/fetchStructErr')
+    }
   },
   computed: {
-    ...mapGetters(['struct'])
+    ...mapGetters(['struct', 'structErr', 'errMessage'])
   }
 }
 </script>

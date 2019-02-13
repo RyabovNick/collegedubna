@@ -12,7 +12,12 @@
 
 <template>
   <v-app>
-    <vue-markdown class="md-helper">{{ $store.state.contacts.page.content }}</vue-markdown>
+    <section v-if="$store.state.contacts.pageErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
+    </section>
+    <section v-else>
+      <vue-markdown class="md-helper">{{ $store.state.contacts.page.content }}</vue-markdown>
+    </section>
   </v-app>
 </template>
 

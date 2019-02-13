@@ -13,19 +13,8 @@ budget,
 document,
 paid_edu
 
-TODO common: error if can't loaded, check styles
-
-TODO education: check everything
-
-TODO eduStandarts: error if can't loaded, check styles
-
-TODO employees: error if can't loaded, check styles, expand checked
-
-TODO grants: error if can't loaded, check styles
-
-TODO struct: error if can't loaded, check styles
-
-TODO vacant: error if can't loaded, check styles
+TODO: common, education, eduStandarts, employees, grants, struct, vacant
+check styles, errors
 
 TODO objects: Check styles. Maybe in the future change 1st table loading. Now its whole data loading.
 

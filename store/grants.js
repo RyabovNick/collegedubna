@@ -1,7 +1,10 @@
 export const state = () => ({
   graduatejob: [],
   grantsdocs: [],
-  hostelinfo: []
+  hostelinfo: [],
+  graduatejobErr: false,
+  grantsdocsErr: false,
+  hostelinfoErr: false
 })
 
 export const getters = {
@@ -13,6 +16,15 @@ export const getters = {
   },
   hostelinfo(state) {
     return state.hostelinfo
+  },
+  graduatejobErr(state) {
+    return state.graduatejobErr
+  },
+  grantsdocsErr(state) {
+    return state.grantsdocsErr
+  },
+  hostelinfoErr(state) {
+    return state.hostelinfoErr
   }
 }
 
@@ -31,6 +43,15 @@ export const actions = {
     const data = await this.$axios.$get('hostelinfo')
     commit('setHostelinfo', data)
     return data
+  },
+  async fetchGraduatejobErr({ commit }) {
+    await commit('setGraduatejobErr', true)
+  },
+  async fetchGrantsdocsErr({ commit }) {
+    await commit('setGrantsdocsErr', true)
+  },
+  async fetchHostelinfoErr({ commit }) {
+    await commit('setHostelinfoErr', true)
   }
 }
 
@@ -43,5 +64,14 @@ export const mutations = {
   },
   setHostelinfo(state, hostelinfo) {
     state.hostelinfo = hostelinfo
+  },
+  setGraduatejobErr(state, value) {
+    state.graduatejobErr = value
+  },
+  setGrantsdocsErr(state, value) {
+    state.grantsdocsErr = value
+  },
+  setHostelinfoErr(state, value) {
+    state.hostelinfoErr = value
   }
 }

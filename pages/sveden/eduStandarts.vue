@@ -9,8 +9,13 @@
 <template>
   <v-app>
     <h1>Образовательные стандарты</h1>
-    <section v-if="errored">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.eduStandarts.standartsErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -73,15 +78,18 @@ export default {
         { text: 'Открыть в новом окне', sortable: false, value: 'eduLinkOpen' },
         { text: 'Скачать', sortable: false, value: 'eduLinkDownload' }
       ],
-      loading: false,
-      errored: false
+      loading: false
     }
   },
   async fetch({ store }) {
-    await store.dispatch('eduStandarts/fetchStandarts')
+    try {
+      await store.dispatch('eduStandarts/fetchStandarts')
+    } catch {
+      await store.dispatch('eduStandarts/fetchStandartsErr')
+    }
   },
   computed: {
-    ...mapGetters(['standarts'])
+    ...mapGetters(['standarts', 'standartsErr', 'errMessage'])
   }
 }
 </script>

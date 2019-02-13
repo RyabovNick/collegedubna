@@ -1,4 +1,104 @@
 <style scoped>
+.btn {
+  min-width: 3.2em;
+  font-size: 16px;
+}
+
+.btn .icon--right {
+  margin-left: 0px;
+}
+
+.btn__content {
+  display: inline-block;
+}
+
+.hidden-sm-and-down {
+  margin-right: 5px;
+}
+
+.list__tile a {
+  color: inherit;
+  text-decoration-line: inherit;
+}
+
+.list__tile a {
+  color: inherit;
+  text-decoration-line: inherit;
+}
+
+.v-list__tile a {
+  padding: 0;
+
+  text-decoration-line: inherit;
+}
+
+.application--wrap {
+  min-height: 0;
+}
+
+.toolbar .content {
+  padding: 0;
+}
+
+.v-toolbar__content {
+  padding-left: 0px;
+}
+
+.v-toolbar__title {
+  display: inline-table;
+  color: #ffffff;
+}
+
+.toolbar__items a {
+  color: #ffffff;
+}
+
+.btn__content i {
+  vertical-align: bottom;
+}
+
+@media only screen and (max-width: 670px) {
+  .v-toolbar__title {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .hidden-sm-and-down {
+    display: inline-block;
+  }
+
+  .toolbar__items {
+    margin-right: 2em;
+  }
+}
+
+@media only screen and (min-width: 670px) {
+  .v-toolbar__title .hidden-sm-and-down {
+    display: initial !important;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .hidden-sm-and-down {
+    display: none !important;
+  }
+
+  .toolbar__items {
+    margin-right: 2em;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2.1),
+  only screen and (min-device-width: 320px) and (max-device-width: 850px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .v-list__tile__title {
+    font-size: 12px;
+  }
+  .v-navigation-drawer {
+    width: 325px;
+  }
+}
+
 .v-footer {
   text-align: center;
 }
@@ -10,11 +110,20 @@
 .v-list__tile__action {
   min-width: 38px;
 }
+
+.toolbar__items a {
+  color: #ffffff;
+}
+
+.theme--light.v-toolbar,
+.theme--light.v-btn {
+  color: #ffffff;
+}
 </style>
 
 
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :clipped="clipped"
@@ -34,15 +143,21 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar :clipped-left="clipped" fixed app>
+    <v-toolbar :clipped-left="clipped" fixed app color="blue darken-3">
       <v-toolbar-side-icon @click="drawer = !drawer"/>
-      <v-toolbar-title v-text="title"/>
+      <router-link to="/">
+        <v-toolbar-title v-text="title"/>
+      </router-link>
       <v-spacer></v-spacer>
       <div v-for="(item, index) in toolbar" :key="index" class="toolbar__items">
         <router-link class="btn btn--flat btn--router" :to="item.link">
           <div class="btn__content">
             <span class="hidden-sm-and-down">{{ item.text }}</span>
-            <i aria-hidden="true" class="icon icon--right material-icons">{{ item.icon }}</i>
+            <i
+              aria-hidden="true"
+              class="icon icon--right material-icons"
+              :title="`${item.text}`"
+            >{{ item.icon }}</i>
           </div>
         </router-link>
       </div>

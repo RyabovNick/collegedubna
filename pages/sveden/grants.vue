@@ -14,8 +14,13 @@ table.v-table thead th {
 <template>
   <v-app>
     <h1>Трудойстройство выпускников</h1>
-    <section v-if="erroredGraduatejob">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.grants.graduatejobErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -39,8 +44,13 @@ table.v-table thead th {
     </section>
     <br>
     <h1>Локальные нормативные акты</h1>
-    <section v-if="erroredGrantsdocs">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.grants.grantsdocsErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -78,8 +88,13 @@ table.v-table thead th {
     </section>
     <br>
     <h1>Наличие общежития, количество жилых помещений в общежитии для иногородних обучающихся</h1>
-    <section v-if="erroredHostelinfo">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.grants.hostelinfoErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -138,12 +153,32 @@ export default {
     }
   },
   async fetch({ store }) {
-    await store.dispatch('grants/fetchGraduatejob')
-    await store.dispatch('grants/fetchGrantsdocs')
-    await store.dispatch('grants/fetchHostelinfo')
+    try {
+      await store.dispatch('grants/fetchGraduatejob')
+    } catch {
+      await store.dispatch('grants/fetchGraduatejobErr')
+    }
+    try {
+      await store.dispatch('grants/fetchGrantsdocs')
+    } catch {
+      await store.dispatch('grants/fetchGrantsdocsErr')
+    }
+    try {
+      await store.dispatch('grants/fetchHostelinfo')
+    } catch {
+      await store.dispatch('grants/fetchHostelinfoErr')
+    }
   },
   computed: {
-    ...mapGetters(['graduatejob', 'grantsdocs', 'hostelinfo'])
+    ...mapGetters([
+      'graduatejob',
+      'graduatejobErr',
+      'grantsdocs',
+      'grantsdocsErr',
+      'hostelinfo',
+      'hostelinfoErr',
+      'errMessage'
+    ])
   }
 }
 </script>

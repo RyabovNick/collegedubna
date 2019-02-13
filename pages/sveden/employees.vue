@@ -26,8 +26,13 @@ table.v-table thead th {
 <template>
   <v-app>
     <h1>Руководство</h1>
-    <section v-if="errored">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.struct.structErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -51,8 +56,13 @@ table.v-table thead th {
     </section>
 
     <h1>Педагогический состав</h1>
-    <section v-if="errored">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.teachingStaff.teachersErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -171,16 +181,29 @@ export default {
           value: "specExperience"
         } */
       ],
-      loading: false,
-      errored: false
+      loading: false
     }
   },
   async fetch({ store }) {
-    await store.dispatch('teachingStaff/fetchTeachers')
-    await store.dispatch('struct/fetchStruct')
+    try {
+      await store.dispatch('teachingStaff/fetchTeachers')
+    } catch {
+      await store.dispatch('teachingStaff/fetchTeachersErr')
+    }
+    try {
+      await store.dispatch('struct/fetchStruct')
+    } catch {
+      await store.dispatch('struct/fetchStruct')
+    }
   },
   computed: {
-    ...mapGetters(['struct', 'teachers'])
+    ...mapGetters([
+      'struct',
+      'structErr',
+      'teachers',
+      'teachersErr',
+      'errMessage'
+    ])
   }
 }
 </script>

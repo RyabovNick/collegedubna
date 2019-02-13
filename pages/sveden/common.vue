@@ -19,8 +19,13 @@
 <template>
   <v-app>
     <h1>Основные сведения</h1>
-    <section v-if="errored">
-      <p>Приносим извинения, произошла ошибка. Пожалуйста, повторите позднее</p>
+    <section v-if="$store.state.common.commonErr">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
     <section v-else>
       <div v-if="loading">Загрузка...</div>
@@ -45,15 +50,18 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      loading: false,
-      errored: false
+      loading: false
     }
   },
   async fetch({ store }) {
-    await store.dispatch('common/fetchCommon')
+    try {
+      await store.dispatch('common/fetchCommon')
+    } catch {
+      await store.dispatch('common/fetchCommonErr')
+    }
   },
   computed: {
-    ...mapGetters(['common'])
+    ...mapGetters(['common', 'commonErr', 'errMessage'])
   }
 }
 </script>
