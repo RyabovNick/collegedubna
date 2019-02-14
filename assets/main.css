@@ -4,12 +4,23 @@ h1 {
   padding-top: 1rem;
 }
 
+/*Размер иконок*/
 .icon-size {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
 }
 
 table.v-table thead th {
   white-space: initial;
+}
+
+/*Уменьшение отступа между элементами в таблице*/
+.v-card table.v-datatable tbody td:not(:nth-child(1)) {
+  padding: 0 8px;
+}
+
+/*Не добавлять margin к 1-ому изображению (где кнопки скачать/открыть)*/
+table.v-table td a:first-child img {
+  margin-left: 0;
 }

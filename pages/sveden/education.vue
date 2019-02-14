@@ -20,6 +20,24 @@ h2 {
   padding-bottom: 1em;
   padding-top: 1em;
 }
+
+.pointer td {
+  cursor: pointer;
+}
+
+.v-card__text {
+  padding: 2px 24px;
+}
+
+.v-card__text p {
+  display: inline-flex;
+  width: 300px;
+  margin: 0;
+}
+
+.v-card__text p:first-child {
+  font-weight: bold;
+}
 </style>
 
 <style>
@@ -51,100 +69,123 @@ table.v-table thead th {
         <v-data-table
           :headers="headersEduop"
           :items="eduop"
-          expand
           :search="searchEduop"
-          class="elevation-2"
+          class="elevation-2 pointer"
           rows-per-page-text="Записей на странице"
         >
           <template slot="items" slot-scope="props">
-            <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-right">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-right">{{ props.item.eduLevel }}</td>
-            <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
-            <td itemprop="eduYear" class="text-xs-right">{{ props.item.year }}</td>
-            <td itemprop="opMain" class="text-xs-center">
-              <a :href="`/files/${props.item.opMain}`" target="_blank">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/open.svg"
-                  alt="Открыть"
-                  title="Открыть в новом окне"
-                >
-              </a>
-              <a :href="`/files/${props.item.opMain}`" download target="_self">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/download.svg"
-                  alt="Скачать"
-                  title="Скачать"
-                >
-              </a>
-            </td>
-            <td itemprop="educationPlan" class="text-xs-center">
-              <a :href="`/files/${props.item.educationPlan}`" target="_blank">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/open.svg"
-                  alt="Открыть"
-                  title="Открыть в новом окне"
-                >
-              </a>
-              <a :href="`/files/${props.item.educationPlan}`" download target="_self">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/download.svg"
-                  alt="Скачать"
-                  title="Скачать"
-                >
-              </a>
-            </td>
-            <td itemprop="educationAnnotation" class="text-xs-center">
-              <a :href="`/files/${props.item.educationAnnotation}`" download target="_self">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/download.svg"
-                  alt="Скачать"
-                  title="Скачать"
-                >
-              </a>
-            </td>
-            <td itemprop="educationShedule" class="text-xs-center">
-              <a :href="`/files/${props.item.educationShedule}`" target="_blank">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/open.svg"
-                  alt="Открыть"
-                  title="Открыть в новом окне"
-                >
-              </a>
-              <a :href="`/files/${props.item.educationShedule}`" download target="_self">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/download.svg"
-                  alt="Скачать"
-                  title="Скачать"
-                >
-              </a>
-            </td>
-            <td itemprop="methodologyedu" class="text-xs-center">
-              <a :href="`/files/${props.item.methodology}`" target="_blank">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/open.svg"
-                  alt="Открыть"
-                  title="Открыть в новом окне"
-                >
-              </a>
-              <a :href="`/files/${props.item.methodology}`" download target="_self">
-                <img
-                  class="icon-size"
-                  src="@/assets/icons/download.svg"
-                  alt="Скачать"
-                  title="Скачать"
-                >
-              </a>
-            </td>
-            <td itemprop="eduPr" class="text-xs-right">{{ props.item.eduPr }}</td>
+            <tr @click="props.expanded = !props.expanded">
+              <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
+              <td itemprop="eduName" class="text-xs-right">{{ props.item.eduName }}</td>
+              <td itemprop="eduLevel" class="text-xs-right">{{ props.item.eduLevel }}</td>
+              <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
+              <td itemprop="eduYear" class="text-xs-right">{{ props.item.year }}</td>
+              <td itemprop="eduPr" class="text-xs-right">{{ props.item.eduPr }}</td>
+            </tr>
+          </template>
+          <template slot="expand" slot-scope="props">
+            <v-card flat>
+              <v-card-text itemprop="opMain">
+                <p>Описание образовательной программы</p>
+                <p>
+                  <a :href="`/files/${props.item.opMain}`" target="_blank">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/open.svg"
+                      alt="Открыть"
+                      title="Открыть в новом окне"
+                    >
+                  </a>
+                  <a :href="`/files/${props.item.opMain}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+              <v-card-text v-if="props.item.educationPlan !== null" itemprop="educationPlan">
+                <p>Учебный план</p>
+                <p>
+                  <a :href="`/files/${props.item.educationPlan}`" target="_blank">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/open.svg"
+                      alt="Открыть"
+                      title="Открыть в новом окне"
+                    >
+                  </a>
+                  <a :href="`/files/${props.item.educationPlan}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+              <v-card-text
+                v-if="props.item.educationAnnotation !== null"
+                itemprop="educationAnnotation"
+              >
+                <p>Аннотации к рабочим программам дисциплин</p>
+                <p>
+                  <a :href="`/files/${props.item.educationAnnotation}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+              <v-card-text v-if="props.item.educationShedule !== null" itemprop="educationShedule">
+                <p>Календарный учебный график</p>
+                <p>
+                  <a :href="`/files/${props.item.educationShedule}`" target="_blank">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/open.svg"
+                      alt="Открыть"
+                      title="Открыть в новом окне"
+                    >
+                  </a>
+                  <a :href="`/files/${props.item.educationShedule}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+              <v-card-text v-if="props.item.methodology !== null" itemprop="methodologyedu">
+                <p>Методические и иные документы</p>
+                <p>
+                  <a :href="`/files/${props.item.methodology}`" target="_blank">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/open.svg"
+                      alt="Открыть"
+                      title="Открыть в новом окне"
+                    >
+                  </a>
+                  <a :href="`/files/${props.item.methodology}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+            </v-card>
           </template>
         </v-data-table>
       </v-card>
@@ -315,27 +356,6 @@ export default {
           value: 'eduForm'
         },
         { text: 'Год', sortable: false, value: 'year' },
-        {
-          text: 'Описание образовательной программы',
-          sortable: false,
-          value: 'opMain'
-        },
-        { text: 'Учебный план', sortable: false, value: 'educationPlan' },
-        {
-          text: 'Аннотации к рабочим программам дисциплин',
-          sortable: false,
-          value: 'educationAnnotation'
-        },
-        {
-          text: 'Календарный учебный график',
-          sortable: false,
-          value: 'educationShedule'
-        },
-        {
-          text: 'Методические и иные документы',
-          sortable: false,
-          value: 'methodology'
-        },
         {
           text:
             'Использование при реализации образовательных программ электронного обучения и дистанционных образовательных технологий',
