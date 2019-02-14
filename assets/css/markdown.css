@@ -84,3 +84,8 @@ ul {
   font-size: 16px;
   line-height: 1.5;
 }
+
+.md-helper >>> iframe {
+  width: 100%;
+  max-width: 560px;
+}

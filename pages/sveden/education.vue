@@ -537,29 +537,39 @@ export default {
   },
   async fetch({ store }) {
     try {
-      await store.dispatch('education/fetchEduop')
+      const fetchEduop = await store.dispatch('education/fetchEduop')
+      console.log('fetchEduop: ', fetchEduop)
     } catch {
-      await store.dispatch('education/fetchEduopErr')
+      store.dispatch('education/fetchEduopErr')
     }
     try {
-      await store.dispatch('education/fetchEduaccred')
+      const fetchEduaccred = store.dispatch('education/fetchEduaccred')
+      console.log('fetchEduaccred: ', fetchEduaccred)
     } catch {
-      await store.dispatch('education/fetchEduaccredErr')
+      store.dispatch('education/fetchEduaccredErr')
     }
     try {
-      await store.dispatch('education/fetchChislen')
+      const fetchChislen = store.dispatch('education/fetchChislen')
+      console.log('fetchChislen: ', fetchChislen)
+      const prom = await Promise.all(fetchChislen)
+      console.log('prom: ', prom)
+      const promans = prom.filter(result => !(result instanceof Error))
+      console.log('promans: ', promans)
     } catch (err) {
-      await store.dispatch('education/fetchChislenErr')
+      console.log('err: ', err)
+      store.dispatch('education/fetchChislenErr')
     }
     try {
-      await store.dispatch('education/fetchPriem')
+      const fetchPriem = store.dispatch('education/fetchPriem')
+      console.log('fetchPriem: ', fetchPriem)
     } catch {
-      await store.dispatch('education/fetchPriemErr')
+      store.dispatch('education/fetchPriemErr')
     }
     try {
-      await store.dispatch('education/fetchPerevod')
+      const fetchPerevod = store.dispatch('education/fetchPerevod')
+      console.log('fetchPerevod: ', fetchPerevod)
     } catch {
-      await store.dispatch('education/fetchPerevodErr')
+      store.dispatch('education/fetchPerevodErr')
     }
   },
   computed: {

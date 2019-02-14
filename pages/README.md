@@ -52,4 +52,6 @@ part employment:
 
     TODO work links/text
 
-TODO CANT DOWNLOAD AND OPEN FILE IN BROWSER!!!
+TODO: news, need to check styles on homepage
+
+TODO: loading from server SYNC!!! DO IT ASYNC! (started in education)
