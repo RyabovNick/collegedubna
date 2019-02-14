@@ -22,15 +22,15 @@ table.v-table thead th {
   <v-app>
     <h1>Материально-техническое обеспечение</h1>
     <h2>Наличие оборудованных учебных кабинетов, объектов для проведения практических занятий</h2>
-    <section v-if="$store.state.objects.educodeErr">
+    <section v-if="educodeErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
       <v-expansion-panel focusable>
-        <v-expansion-panel-content v-for="(item, i) in $store.state.objects.educode" :key="i">
+        <v-expansion-panel-content v-for="(item, i) in educode" :key="i">
           <div slot="header">{{ item.cab_head}}</div>
           <v-card>
-            <section v-if="$store.state.objects.educodeErr">
+            <section v-if="educodeErr">
               <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
             </section>
             <section v-else>
@@ -38,7 +38,7 @@ table.v-table thead th {
                 <v-card-title></v-card-title>
                 <v-data-table
                   :headers="headersEducode"
-                  :items="$store.state.objects.cabs[i]"
+                  :items="cabs[i]"
                   expand
                   class="elevation-2"
                   rows-per-page-text="Записей на странице"
@@ -60,14 +60,14 @@ table.v-table thead th {
       Сведения о наличии библиотек, объектов спорта, об условиях питания и
       охраны здоровья обучающихся
     </h2>
-    <section v-if="$store.state.objects.purposelibrErr">
+    <section v-if="purposelibrErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
       <v-card>
         <v-data-table
           :headers="headersPurposelibr"
-          :items="$store.state.objects.purposelibr"
+          :items="purposelibr"
           expand
           class="elevation-2"
           hide-actions
@@ -98,14 +98,14 @@ table.v-table thead th {
     </section>
 
     <h2>Сведения о доступе к электронной информационно-образовательной среде, информационным системам и информационно-телекоммуникационным сетям и электронным ресурсам, к которым обеспечивается доступ обучающихся</h2>
-    <section v-if="$store.state.objects.purposeeiosErr">
+    <section v-if="purposeeiosErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
       <v-card>
         <v-data-table
           :headers="headersPurposeeios"
-          :items="$store.state.objects.purposeeios"
+          :items="purposeeios"
           expand
           class="elevation-2"
           hide-actions
@@ -186,9 +186,7 @@ export default {
           sortable: false,
           value: 'quantity'
         }
-      ],
-      errMessage:
-        'Приносим извинения, произошла ошибка при загрузке данных. Пожалуйста, повторите запрос позднее.'
+      ]
     }
   },
   async fetch({ store }) {
@@ -209,15 +207,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'educode',
-      'educodeErr',
-      'purposelibr',
-      'purposelibrErr',
-      'purposeeios',
-      'purposeeiosErr',
-      'cabs'
-    ])
+    ...mapGetters({
+      educode: 'objects/educode',
+      educodeErr: 'objects/educodeErr',
+      purposelibr: 'objects/purposelibr',
+      purposelibrErr: 'objects/purposelibrErr',
+      purposeeios: 'objects/purposeeios',
+      purposeeiosErr: 'objects/purposeeiosErr',
+      cabs: 'objects/cabs',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

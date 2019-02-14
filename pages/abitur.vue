@@ -4,16 +4,11 @@
 
 <template>
   <v-app>
-    <section v-if="$store.state.abitur.pageErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="abiturErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
-      <vue-markdown class="md-helper">{{ $store.state.abitur.page.content }}</vue-markdown>
+      <vue-markdown class="md-helper">{{ abitur.content }}</vue-markdown>
     </section>
   </v-app>
 </template>
@@ -28,13 +23,17 @@ export default {
   },
   async fetch({ store }) {
     try {
-      await store.dispatch('abitur/fetchPage', '1')
+      await store.dispatch('abitur/fetchAbitur', '1')
     } catch {
-      await store.dispatch('abitur/fetchPageErr')
+      await store.dispatch('abitur/fetchAbiturErr')
     }
   },
   computed: {
-    ...mapGetters(['page', 'pageErr', 'errMessage'])
+    ...mapGetters({
+      abitur: 'abitur/abitur',
+      abiturErr: 'abitur/abiturErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

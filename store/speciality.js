@@ -7,7 +7,7 @@ export const getters = {
   page(state) {
     return state.page
   },
-  eduaccredErr(state) {
+  pageErr(state) {
     return state.pageErr
   }
 }

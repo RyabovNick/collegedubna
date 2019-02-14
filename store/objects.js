@@ -23,6 +23,9 @@ export const getters = {
   purposeeios(state) {
     return state.purposeeios
   },
+  cabs(state) {
+    return state.cabs
+  },
   educodeErr(state) {
     return state.educodeErr
   },

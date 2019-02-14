@@ -26,24 +26,14 @@ table.v-table thead th {
 <template>
   <v-app>
     <h1>Руководство</h1>
-    <section v-if="$store.state.struct.structErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="structErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
 
     <section v-else>
       <div v-if="loading">Загрузка...</div>
 
-      <v-data-table
-        :headers="headersHeads"
-        :items="$store.state.struct.struct"
-        hide-actions
-        class="elevation-1"
-      >
+      <v-data-table :headers="headersHeads" :items="struct" hide-actions class="elevation-1">
         <template slot="items" slot-scope="props">
           <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
           <td itemprop="post" class="text-xs-right">{{ props.item.post }}</td>
@@ -56,13 +46,8 @@ table.v-table thead th {
     </section>
 
     <h1>Педагогический состав</h1>
-    <section v-if="$store.state.teachingStaff.teachersErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="teachersErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -80,7 +65,7 @@ table.v-table thead th {
 
         <v-data-table
           :headers="headersTeachingStaff"
-          :items="$store.state.teachingStaff.teachers"
+          :items="teachers"
           class="elevation-2"
           :search="search"
           rows-per-page-text="Записей на странице"
@@ -197,13 +182,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'struct',
-      'structErr',
-      'teachers',
-      'teachersErr',
-      'errMessage'
-    ])
+    ...mapGetters({
+      struct: 'struct/struct',
+      structErr: 'struct/structErr',
+      teachers: 'teachingStaff/teachers',
+      teachersErr: 'teachingStaff/teachersErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

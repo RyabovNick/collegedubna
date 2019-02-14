@@ -34,7 +34,7 @@ table.v-table thead th {
   <v-app>
     <h1>Образование</h1>
     <h2>Информация по образовательным программам</h2>
-    <section v-if="$store.state.education.eduopErr">
+    <section v-if="eduopErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
@@ -50,7 +50,7 @@ table.v-table thead th {
         </v-card-title>
         <v-data-table
           :headers="headersEduop"
-          :items="$store.state.education.eduop"
+          :items="eduop"
           expand
           :search="searchEduop"
           class="elevation-2"
@@ -150,7 +150,7 @@ table.v-table thead th {
       </v-card>
     </section>
     <h2>Информация о сроке действия государственной аккредитации образовательной программы, о языках, на которых осуществляется образование (обучение)</h2>
-    <section v-if="$store.state.education.eduaccredErr">
+    <section v-if="eduaccredErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
@@ -166,7 +166,7 @@ table.v-table thead th {
         </v-card-title>
         <v-data-table
           :headers="headersEduaccred"
-          :items="$store.state.education.eduaccred"
+          :items="eduaccred"
           expand
           :search="searchEduaccred"
           class="elevation-2"
@@ -184,7 +184,7 @@ table.v-table thead th {
       </v-card>
     </section>
     <h2>Информация о численности обучающихся по реализуемым образовательным программам</h2>
-    <section v-if="$store.state.education.chislenErr">
+    <section v-if="chislenErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
@@ -200,7 +200,7 @@ table.v-table thead th {
         </v-card-title>
         <v-data-table
           :headers="headersChislen"
-          :items="$store.state.education.chislen"
+          :items="chislen"
           expand
           :search="searchChislen"
           class="elevation-2"
@@ -220,7 +220,7 @@ table.v-table thead th {
       </v-card>
     </section>
     <h2>Информация о результатах приема</h2>
-    <section v-if="$store.state.education.priemErr">
+    <section v-if="priemErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
@@ -236,7 +236,7 @@ table.v-table thead th {
         </v-card-title>
         <v-data-table
           :headers="headersPriem"
-          :items="$store.state.education.priem"
+          :items="priem"
           expand
           :search="searchPriem"
           class="elevation-2"
@@ -256,7 +256,7 @@ table.v-table thead th {
       </v-card>
     </section>
     <h2>Информация о результатах перевода, восстановления и отчисления</h2>
-    <section v-if="$store.state.education.perevodErr">
+    <section v-if="perevodErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
@@ -272,7 +272,7 @@ table.v-table thead th {
         </v-card-title>
         <v-data-table
           :headers="headersPerevod"
-          :items="$store.state.education.perevod"
+          :items="perevod"
           expand
           :search="searchPerevod"
           class="elevation-2"
@@ -512,9 +512,7 @@ export default {
           sortable: false,
           value: 'numberExpPerevod'
         }
-      ],
-      errMessage:
-        'Приносим извинения, произошла ошибка при загрузке данных. Пожалуйста, повторите запрос позднее.'
+      ]
     }
   },
   async fetch({ store }) {
@@ -545,18 +543,19 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'eduaccred',
-      'eduop',
-      'chislen',
-      'priem',
-      'perevod',
-      'eduopErr',
-      'eduaccredErr',
-      'chislenErr',
-      'priemErr',
-      'perevodErr'
-    ])
+    ...mapGetters({
+      eduaccred: 'education/eduaccred',
+      eduop: 'education/eduop',
+      chislen: 'education/chislen',
+      priem: 'education/priem',
+      perevod: 'education/perevod',
+      eduopErr: 'education/eduopErr',
+      eduaccredErr: 'education/eduaccredErr',
+      chislenErr: 'education/chislenErr',
+      priemErr: 'education/priemErr',
+      perevodErr: 'education/perevodErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

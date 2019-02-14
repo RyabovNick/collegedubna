@@ -1,24 +1,14 @@
 <template>
   <v-app>
     <h1>Структура и органы управления образовательной организации</h1>
-    <section v-if="$store.state.struct.structErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="structErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
 
     <section v-else>
       <div v-if="loading">Загрузка...</div>
 
-      <v-data-table
-        :headers="headers"
-        :items="$store.state.struct.struct"
-        hide-actions
-        class="elevation-1"
-      >
+      <v-data-table :headers="headers" :items="struct" hide-actions class="elevation-1">
         <template slot="items" slot-scope="props">
           <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
           <td itemprop="post" class="text-xs-right">{{ props.item.post }}</td>
@@ -60,7 +50,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['struct', 'structErr', 'errMessage'])
+    ...mapGetters({
+      struct: 'struct/struct',
+      structErr: 'struct/structErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

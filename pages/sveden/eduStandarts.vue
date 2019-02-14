@@ -9,13 +9,8 @@
 <template>
   <v-app>
     <h1>Образовательные стандарты</h1>
-    <section v-if="$store.state.eduStandarts.standartsErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="standartsErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
 
     <section v-else>
@@ -32,7 +27,7 @@
         </v-card-title>
         <v-data-table
           :headers="headers"
-          :items="$store.state.eduStandarts.standarts"
+          :items="standarts"
           :search="search"
           hide-actions
           class="elevation-1"
@@ -89,7 +84,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['standarts', 'standartsErr', 'errMessage'])
+    ...mapGetters({
+      standarts: 'eduStandarts/standarts',
+      standartsErr: 'eduStandarts/standartsErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

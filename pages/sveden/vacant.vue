@@ -29,13 +29,8 @@ table.v-table thead th {
 <template>
   <v-app>
     <h1>Вакантные места</h1>
-    <section v-if="$store.state.vacant.vacantErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="vacantErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
       <div v-if="loading">Загрузка...</div>
@@ -51,7 +46,7 @@ table.v-table thead th {
         </v-card-title>
         <v-data-table
           :headers="headers"
-          :items="$store.state.vacant.vacant"
+          :items="vacant"
           expand
           :search="search"
           class="elevation-2"
@@ -186,7 +181,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['vacant', 'vacantErr', 'errMessage'])
+    ...mapGetters({
+      vacant: 'vacant/vacant',
+      vacantErr: 'vacant/vacantErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

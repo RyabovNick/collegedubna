@@ -14,22 +14,13 @@ table.v-table thead th {
 <template>
   <v-app>
     <h1>Трудойстройство выпускников</h1>
-    <section v-if="$store.state.grants.graduatejobErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="graduatejobErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
 
     <section v-else>
       <div v-if="loadingGraduatejob">Загрузка...</div>
-      <v-data-table
-        :headers="headersGraduatejob"
-        :items="$store.state.grants.graduatejob"
-        class="elevation-1"
-      >
+      <v-data-table :headers="headersGraduatejob" :items="graduatejob" class="elevation-1">
         <template slot="items" slot-scope="props">
           <td itemprop="eduCode" class="text-xs-left">{{ props.item.code }}</td>
           <td itemprop="eduName" class="text-xs-left">{{ props.item.name }}</td>
@@ -44,20 +35,15 @@ table.v-table thead th {
     </section>
     <br>
     <h1>Локальные нормативные акты</h1>
-    <section v-if="$store.state.grants.grantsdocsErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="grantsdocsErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
 
     <section v-else>
       <div v-if="loadingGrantsdocs">Загрузка...</div>
       <v-data-table
         :headers="headersGrantsdocs"
-        :items="$store.state.grants.grantsdocs"
+        :items="grantsdocs"
         hide-actions
         class="elevation-1"
       >
@@ -88,23 +74,13 @@ table.v-table thead th {
     </section>
     <br>
     <h1>Наличие общежития, количество жилых помещений в общежитии для иногородних обучающихся</h1>
-    <section v-if="$store.state.grants.hostelinfoErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="hostelinfoErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
 
     <section v-else>
       <div v-if="loadingHostelinfo">Загрузка...</div>
-      <v-data-table
-        :items="$store.state.grants.hostelinfo"
-        class="elevation-1"
-        hide-actions
-        hide-headers
-      >
+      <v-data-table :items="hostelinfo" class="elevation-1" hide-actions hide-headers>
         <template slot="items" slot-scope="props">
           <td>{{ props.item.name }}</td>
           <td class="text-xs-right" :itemprop="`${props.item.tag}`">{{ props.item.value }}</td>
@@ -139,17 +115,11 @@ export default {
           value: 'count_work_graduate'
         }
       ],
-      loadingGraduatejob: false,
-      erroredGraduatejob: false,
       headersGrantsdocs: [
         { text: 'Название файла', sortable: false, value: 'name' },
         { text: 'Открыть в новом окне', sortable: false, value: 'eduLinkOpen' },
         { text: 'Скачать', sortable: false, value: 'eduLinkDownload' }
-      ],
-      loadingGrantsdocs: false,
-      erroredGrantsdocs: false,
-      loadingHostelinfo: false,
-      erroredHostelinfo: false
+      ]
     }
   },
   async fetch({ store }) {
@@ -170,15 +140,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'graduatejob',
-      'graduatejobErr',
-      'grantsdocs',
-      'grantsdocsErr',
-      'hostelinfo',
-      'hostelinfoErr',
-      'errMessage'
-    ])
+    ...mapGetters({
+      graduatejob: 'grants/graduatejob',
+      graduatejobErr: 'grants/graduatejobErr',
+      grantsdocs: 'grants/grantsdocs',
+      grantsdocsErr: 'grants/grantsdocsErr',
+      hostelinfo: 'grants/hostelinfo',
+      hostelinfoErr: 'grants/hostelinfoErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

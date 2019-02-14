@@ -1,33 +1,33 @@
 export const state = () => ({
-  page: [],
-  pageErr: false
+  contacts: [],
+  contactsErr: false
 })
 
 export const getters = {
-  page(state) {
-    return state.page
+  contacts(state) {
+    return state.contacts
   },
-  eduaccredErr(state) {
-    return state.pageErr
+  contactsErr(state) {
+    return state.contactsErr
   }
 }
 
 export const actions = {
-  async fetchPage({ commit }, param) {
+  async fetchContacts({ commit }, param) {
     const data = await this.$axios.$get(`pages/${param}`)
-    commit('setPage', data[0])
+    commit('setContacts', data[0])
     return data[0]
   },
-  async fetchPageErr({ commit }) {
-    await commit('setPageErr', true)
+  async fetchContactsErr({ commit }) {
+    await commit('setContactsErr', true)
   }
 }
 
 export const mutations = {
-  setPage(state, page) {
-    state.page = page
+  setContacts(state, contacts) {
+    state.contacts = contacts
   },
-  setPageErr(state, value) {
-    state.pageErr = value
+  setContactsErr(state, value) {
+    state.contactsErr = value
   }
 }

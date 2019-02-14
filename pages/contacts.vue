@@ -12,16 +12,11 @@
 
 <template>
   <v-app>
-    <section v-if="$store.state.contacts.pageErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="contactsErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
-      <vue-markdown class="md-helper">{{ $store.state.contacts.page.content }}</vue-markdown>
+      <vue-markdown class="md-helper">{{ contacts.content }}</vue-markdown>
     </section>
   </v-app>
 </template>
@@ -36,13 +31,17 @@ export default {
   },
   async fetch({ store }) {
     try {
-      await store.dispatch('contacts/fetchPage', '4')
+      await store.dispatch('contacts/fetchContacts', '4')
     } catch {
-      await store.dispatch('contacts/fetchPageErr')
+      await store.dispatch('contacts/fetchContactsErr')
     }
   },
   computed: {
-    ...mapGetters(['page', 'pageErr', 'errMessage'])
+    ...mapGetters({
+      contacts: 'contacts/contacts',
+      contactsErr: 'contacts/contactsErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

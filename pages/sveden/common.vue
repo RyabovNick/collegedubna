@@ -19,22 +19,12 @@
 <template>
   <v-app>
     <h1>Основные сведения</h1>
-    <section v-if="$store.state.common.commonErr">
-      <v-alert
-        :value="true"
-        color="error"
-        icon="warning"
-        outline
-      >{{ $store.state.helpers.errMessage }}</v-alert>
+    <section v-if="commonErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
       <div v-if="loading">Загрузка...</div>
-      <v-data-table
-        :items="$store.state.common.common"
-        class="elevation-1"
-        hide-actions
-        hide-headers
-      >
+      <v-data-table :items="common" class="elevation-1" hide-actions hide-headers>
         <template slot="items" slot-scope="props">
           <td>{{ props.item.name }}</td>
           <td class="text-xs-right" :itemprop="`${props.item.tag}`">{{ props.item.value }}</td>
@@ -61,7 +51,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['common', 'commonErr', 'errMessage'])
+    ...mapGetters({
+      common: 'common/common',
+      commonErr: 'common/commonErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>

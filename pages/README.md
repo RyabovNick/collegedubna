@@ -16,7 +16,7 @@ paid_edu
 TODO: common, education, eduStandarts, employees, grants, struct, vacant
 check styles, errors
 
-TODO objects: Check styles. Maybe in the future change 1st table loading. Now its whole data loading.
+TODO objects: Check styles. Maybe in the future change 1st table loading. Now its whole data loading. Idea: not doing API calls for every eduCode; make 1 call and access to data with vuex filters and getters with arguments
 
 TODO style from every page to main.css!!!
 
