@@ -15,7 +15,6 @@ export const getters = {
 export const actions = {
   async fetchAbout({ commit }, param) {
     const data = await this.$axios.$get(`pages/${param}`)
-    console.log(data)
     commit('setAbout', data[0])
     return data[0]
   },

@@ -107,6 +107,10 @@
   padding: 0 12px;
 }
 
+.v-list__group__header div > .v-list__tile {
+  padding-left: 0;
+}
+
 .v-list__tile__action {
   min-width: 38px;
 }
@@ -121,6 +125,18 @@
 }
 </style>
 
+<style>
+.v-list__group__header div > .v-list__tile {
+  padding-left: 0;
+}
+
+.v-list--group__header .v-list--group__header__prepend-icon {
+  min-width: 54;
+  padding-left: 16px;
+}
+</style>
+
+
 
 <template>
   <v-app>
@@ -132,15 +148,51 @@
       width="355"
       disable-resize-watcher
     >
-      <v-list>
-        <v-list-tile v-for="(item, i) in items" :key="i" :to="item.to" router exact>
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"/>
-          </v-list-tile-content>
-        </v-list-tile>
+      <v-list dense>
+        <template v-for="item in items">
+          <v-layout v-if="item.heading" :key="item.heading" row align-center>
+            <v-flex xs6>
+              <v-subheader v-if="item.heading">{{ item.heading }}</v-subheader>
+            </v-flex>
+            <v-flex xs6 class="text-xs-center">
+              <a href="#!" class="body-2 black--text">EDIT</a>
+            </v-flex>
+          </v-layout>
+          <v-list-group
+            v-else-if="item.children"
+            v-model="item.model"
+            :key="item.text"
+            :prepend-icon="item.model ? item.icon : item['icon-alt']"
+            append-icon
+            active-class="sizers"
+          >
+            <v-list-tile slot="activator">
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile v-for="(child, i) in item.children" :key="i">
+              <router-link class="v-list__tile" :to="child.link">
+                <v-list-tile-action v-if="child.icon">
+                  <v-icon>{{ child.icon }}</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>{{ child.text }}</v-list-tile-title>
+                </v-list-tile-content>
+              </router-link>
+            </v-list-tile>
+          </v-list-group>
+          <v-list-tile v-else :key="item.text">
+            <router-link class="v-list__tile" :to="item.link">
+              <v-list-tile-action>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+              </v-list-tile-content>
+            </router-link>
+          </v-list-tile>
+        </template>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar :clipped-left="clipped" fixed app color="blue darken-3">
@@ -203,90 +255,93 @@ export default {
       clipped: true,
       drawer: false,
       items: [
-        { icon: 'home', title: 'Главная', to: '/' },
-        { icon: 'account_balance', title: 'О нас', to: '/about' },
-        { icon: 'people', title: 'Абитуриентам', to: '/abitur' },
+        { icon: 'home', text: 'Главная', link: '/' },
+        { icon: 'account_balance', text: 'О нас', link: '/about' },
+        { icon: 'people', text: 'Абитуриентам', link: '/abitur' },
         {
           icon: 'school',
-          title: 'О профессиях и специальностях',
-          to: '/speciality'
+          text: 'О профессиях и специальностях',
+          link: '/speciality'
         },
         {
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',
-          title: 'Сведения об образовательной организации',
+          text: 'Сведения об образовательной организации',
           model: false,
           children: [
-            { title: 'Основные сведения', to: '/sveden/common' },
+            { text: 'Основные сведения', link: '/sveden/common' },
             {
-              title:
+              text:
                 'Структура и органы управления образовательной организацией',
-              to: '/sveden/struct'
+              link: '/sveden/struct'
             },
             {
-              title: 'Документы',
-              to: '/sveden/document'
+              text: 'Документы',
+              link: '/sveden/document'
             },
             {
-              title: 'Образование',
-              to: '/sveden/education'
+              text: 'Образование',
+              link: '/sveden/education'
             },
             {
-              title: 'Образовательные стандарты',
-              to: '/sveden/eduStandarts'
+              text: 'Образовательные стандарты',
+              link: '/sveden/eduStandarts'
             },
             {
-              title:
+              text:
                 'Руководство. Педагогический (научно-педагогический) состав',
-              to: '/sveden/employees'
+              link: '/sveden/employees'
             },
             {
-              title:
+              text:
                 'Материально-техническое обеспечение \n и оснащенность образовательного процесса',
-              to: '/sveden/objects'
+              link: '/sveden/objects'
             },
             {
-              title: 'Стипендии и иные виды материальной поддержки',
-              to: '/sveden/grants'
+              text: 'Стипендии и иные виды материальной поддержки',
+              link: '/sveden/grants'
             },
             {
-              title: 'Платные образовательные услуги',
-              to: '/sveden/paid_edu'
+              text: 'Платные образовательные услуги',
+              link: '/sveden/paid_edu'
             },
             {
-              title: 'Финансово-хозяйственная деятельность',
-              to: '/sveden/budget'
+              text: 'Финансово-хозяйственная деятельность',
+              link: '/sveden/budget'
             },
             {
-              title: 'Вакантные места для приема (перевода)',
-              to: '/sveden/vacant'
+              text: 'Вакантные места для приема (перевода)',
+              link: '/sveden/vacant'
             }
           ]
         },
         {
           icon: 'accessible',
           'icon-alt': 'accessible',
-          title: 'Доступная среда',
+          text: 'Доступная среда',
           model: false,
           children: [
-            { title: 'Виртуальная экскурсия', to: '/environment/virtual_tour' },
-            { title: 'Паспорта доступности', to: '/environment/availability' },
-            { title: 'Дорожная карта', to: '/environment/road_map' },
-            { title: 'Нормативное обеспечение', to: '/environment/normative' },
-            { title: 'Оборудование', to: '/environment/equipment' },
-            { title: 'Профориентация', to: '/environment/career_guidance' },
             {
-              title: 'Перечень мер социальной поддержки',
-              to: '/environment/social_support'
+              text: 'Виртуальная экскурсия',
+              link: '/environment/virtual_tour'
             },
-            { title: 'Трудоустройство', to: '/environment/employment' }
+            { text: 'Паспорта доступности', link: '/environment/availability' },
+            { text: 'Дорожная карта', link: '/environment/road_map' },
+            { text: 'Нормативное обеспечение', link: '/environment/normative' },
+            { text: 'Оборудование', link: '/environment/equipment' },
+            { text: 'Профориентация', link: '/environment/career_guidance' },
+            {
+              text: 'Перечень мер социальной поддержки',
+              link: '/environment/social_support'
+            },
+            { text: 'Трудоустройство', link: '/environment/employment' }
           ]
         },
-        { icon: 'contacts', title: 'Контакты', to: '/contacts' },
+        { icon: 'contacts', text: 'Контакты', link: '/contacts' },
         {
           icon: 'remove_red_eye',
-          title: 'Версия для слабовидящих',
-          to: '/special'
+          text: 'Версия для слабовидящих',
+          link: '/special'
         }
       ],
       toolbar: [

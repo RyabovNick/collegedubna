@@ -19,7 +19,6 @@ table.v-table thead th {
     </section>
 
     <section v-else>
-      <div v-if="loadingGraduatejob">Загрузка...</div>
       <v-data-table :headers="headersGraduatejob" :items="graduatejob" class="elevation-1">
         <template slot="items" slot-scope="props">
           <td itemprop="eduCode" class="text-xs-left">{{ props.item.code }}</td>
@@ -40,7 +39,6 @@ table.v-table thead th {
     </section>
 
     <section v-else>
-      <div v-if="loadingGrantsdocs">Загрузка...</div>
       <v-data-table
         :headers="headersGrantsdocs"
         :items="grantsdocs"
@@ -79,7 +77,6 @@ table.v-table thead th {
     </section>
 
     <section v-else>
-      <div v-if="loadingHostelinfo">Загрузка...</div>
       <v-data-table :items="hostelinfo" class="elevation-1" hide-actions hide-headers>
         <template slot="items" slot-scope="props">
           <td>{{ props.item.name }}</td>
