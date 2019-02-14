@@ -89,3 +89,7 @@ ul {
   width: 100%;
   max-width: 560px;
 }
+
+.md-helper >>> .yandexmap {
+  max-width: inherit;
+}
