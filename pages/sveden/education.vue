@@ -536,41 +536,32 @@ export default {
     }
   },
   async fetch({ store }) {
-    try {
-      const fetchEduop = await store.dispatch('education/fetchEduop')
-      console.log('fetchEduop: ', fetchEduop)
-    } catch {
+    // все ошибки - false
+    store.commit('education/setErrorsDefaultValue')
+
+    // выполняем все запросы параллельно
+    const fetchEduop = store.dispatch('education/fetchEduop')
+    const fetchEduaccred = store.dispatch('education/fetchEduaccred')
+    const fetchChislen = store.dispatch('education/fetchChislen')
+    const fetchPriem = store.dispatch('education/fetchPriem')
+    const fetchPerevod = store.dispatch('education/fetchPerevod')
+
+    // в случае ошибки ставим переменной в store = true
+    await fetchEduop.catch(() => {
       store.dispatch('education/fetchEduopErr')
-    }
-    try {
-      const fetchEduaccred = store.dispatch('education/fetchEduaccred')
-      console.log('fetchEduaccred: ', fetchEduaccred)
-    } catch {
+    })
+    await fetchEduaccred.catch(() => {
       store.dispatch('education/fetchEduaccredErr')
-    }
-    try {
-      const fetchChislen = store.dispatch('education/fetchChislen')
-      console.log('fetchChislen: ', fetchChislen)
-      const prom = await Promise.all(fetchChislen)
-      console.log('prom: ', prom)
-      const promans = prom.filter(result => !(result instanceof Error))
-      console.log('promans: ', promans)
-    } catch (err) {
-      console.log('err: ', err)
+    })
+    await fetchChislen.catch(() => {
       store.dispatch('education/fetchChislenErr')
-    }
-    try {
-      const fetchPriem = store.dispatch('education/fetchPriem')
-      console.log('fetchPriem: ', fetchPriem)
-    } catch {
+    })
+    await fetchPriem.catch(() => {
       store.dispatch('education/fetchPriemErr')
-    }
-    try {
-      const fetchPerevod = store.dispatch('education/fetchPerevod')
-      console.log('fetchPerevod: ', fetchPerevod)
-    } catch {
+    })
+    await fetchPerevod.catch(() => {
       store.dispatch('education/fetchPerevodErr')
-    }
+    })
   },
   computed: {
     ...mapGetters({

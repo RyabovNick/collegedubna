@@ -117,5 +117,12 @@ export const mutations = {
   },
   setPerevodErr(state, value) {
     state.perevodErr = value
+  },
+  setErrorsDefaultValue(state) {
+    state.eduopErr = false
+    state.priemErr = false
+    state.perevodErr = false
+    state.eduaccredErr = false
+    state.chislenErr = false
   }
 }
