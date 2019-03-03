@@ -18,8 +18,8 @@ export const actions = {
     commit('setStandarts', data)
     return data
   },
-  async fetchStandartsErr({ commit }) {
-    await commit('setStandartsErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setStandartsErr', false)
   }
 }
 

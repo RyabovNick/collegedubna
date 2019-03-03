@@ -18,8 +18,8 @@ export const actions = {
     commit('setStruct', data)
     return data
   },
-  async fetchStructErr({ commit }) {
-    await commit('setStructErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setStructErr', false)
   }
 }
 

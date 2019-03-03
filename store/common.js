@@ -18,8 +18,8 @@ export const actions = {
     commit('setCommon', data)
     return data
   },
-  async fetchCommonErr({ commit }) {
-    await commit('setCommonErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setCommonErr', false)
   }
 }
 

@@ -18,8 +18,8 @@ export const actions = {
     commit('setPage', data[0])
     return data[0]
   },
-  async fetchPageErr({ commit }) {
-    await commit('setPageErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setPageErr', false)
   }
 }
 

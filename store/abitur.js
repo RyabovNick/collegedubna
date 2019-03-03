@@ -18,8 +18,8 @@ export const actions = {
     commit('setAbitur', data[0])
     return data[0]
   },
-  async fetchAbiturErr({ commit }) {
-    await commit('setAbiturErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setAbiturErr', false)
   }
 }
 

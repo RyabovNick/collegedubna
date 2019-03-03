@@ -65,17 +65,11 @@ export const actions = {
     commit('setPurposeeios', data)
     return data
   },
-  async fetchEducodeErr({ commit }) {
-    await commit('setEducodeErr', true)
-  },
-  async fetchEduaccredErr({ commit }) {
-    await commit('setEduaccredErr', true)
-  },
-  async fetchPurposelibrErr({ commit }) {
-    await commit('setPurposelibrErr', true)
-  },
-  async fetchPurposeeiosErr({ commit }) {
-    await commit('setPurposeeiosErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setEducodeErr', false)
+    await commit('setEduaccredErr', false)
+    await commit('setPurposelibrErr', false)
+    await commit('setPurposeeiosErr', false)
   }
 }
 

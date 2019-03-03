@@ -18,8 +18,8 @@ export const actions = {
     commit('setContacts', data[0])
     return data[0]
   },
-  async fetchContactsErr({ commit }) {
-    await commit('setContactsErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setContactsErr', false)
   }
 }
 

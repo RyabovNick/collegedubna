@@ -44,10 +44,11 @@ export default {
     }
   },
   async fetch({ store }) {
+    store.dispatch('common/setErrorsToFalse')
     try {
       await store.dispatch('common/fetchCommon')
     } catch {
-      await store.dispatch('common/fetchCommonErr')
+      await store.commit('common/setCommonErr', true)
     }
   },
   computed: {

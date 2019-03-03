@@ -27,10 +27,11 @@ export default {
     VueMarkdown
   },
   async fetch({ store }) {
+    store.dispatch('speciality/setErrorsToFalse')
     try {
       await store.dispatch('speciality/fetchPage', '2')
     } catch {
-      await store.dispatch('speciality/fetchPageErr')
+      await store.commit('speciality/setPageErr', true)
     }
   },
   computed: {

@@ -77,10 +77,11 @@ export default {
     }
   },
   async fetch({ store }) {
+    store.dispatch('eduStandarts/setErrorsToFalse', false)
     try {
       await store.dispatch('eduStandarts/fetchStandarts')
     } catch {
-      await store.dispatch('eduStandarts/fetchStandartsErr')
+      await store.commit('eduStandarts/setStandartsErr', true)
     }
   },
   computed: {

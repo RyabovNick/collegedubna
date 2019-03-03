@@ -22,10 +22,11 @@ export default {
     VueMarkdown
   },
   async fetch({ store }) {
+    store.dispatch('abitur/setErrorsToFalse')
     try {
       await store.dispatch('abitur/fetchAbitur', '1')
     } catch {
-      await store.dispatch('abitur/fetchAbiturErr')
+      await store.commit('abitur/setAbiturErr', true)
     }
   },
   computed: {

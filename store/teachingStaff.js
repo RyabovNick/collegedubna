@@ -18,8 +18,8 @@ export const actions = {
     commit('setTeachers', data)
     return data
   },
-  async fetchTeachersErr({ commit }) {
-    await commit('setTeachersErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setTeachersErr', false)
   }
 }
 

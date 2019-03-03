@@ -170,16 +170,18 @@ export default {
     }
   },
   async fetch({ store }) {
-    try {
-      await store.dispatch('teachingStaff/fetchTeachers')
-    } catch {
-      await store.dispatch('teachingStaff/fetchTeachersErr')
-    }
-    try {
-      await store.dispatch('struct/fetchStruct')
-    } catch {
-      await store.dispatch('struct/fetchStruct')
-    }
+    store.dispatch('teachingStaff/setErrorsToFalse')
+    store.dispatch('struct/setErrorsToFalse')
+
+    const fetchStruct = store.dispatch('struct/fetchStruct')
+    const fetchTeachers = store.dispatch('teachingStaff/fetchTeachers')
+
+    await fetchStruct.catch(() => {
+      store.commit('struct/setStruct', true)
+    })
+    await fetchTeachers.catch(() => {
+      store.commit('teachingStaff/setTeachersErr', true)
+    })
   },
   computed: {
     ...mapGetters({

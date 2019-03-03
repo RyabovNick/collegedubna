@@ -120,21 +120,21 @@ export default {
     }
   },
   async fetch({ store }) {
-    try {
-      await store.dispatch('grants/fetchGraduatejob')
-    } catch {
-      await store.dispatch('grants/fetchGraduatejobErr')
-    }
-    try {
-      await store.dispatch('grants/fetchGrantsdocs')
-    } catch {
-      await store.dispatch('grants/fetchGrantsdocsErr')
-    }
-    try {
-      await store.dispatch('grants/fetchHostelinfo')
-    } catch {
-      await store.dispatch('grants/fetchHostelinfoErr')
-    }
+    store.dispatch('grants/setErrorsToFalse')
+
+    const fetchGraduatejob = store.dispatch('grants/fetchGraduatejob')
+    const fetchGrantsdocs = store.dispatch('grants/fetchGrantsdocs')
+    const fetchHostelinfo = store.dispatch('grants/fetchHostelinfo')
+
+    await fetchGraduatejob.catch(() => {
+      store.commit('grants/setGraduatejobErr', true)
+    })
+    await fetchGrantsdocs.catch(() => {
+      store.commit('grants/setGrantsdocsErr', true)
+    })
+    await fetchHostelinfo.catch(() => {
+      store.commit('grants/setHostelinfoErr', true)
+    })
   },
   computed: {
     ...mapGetters({

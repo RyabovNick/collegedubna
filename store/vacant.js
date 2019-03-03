@@ -18,8 +18,8 @@ export const actions = {
     commit('setVacant', data)
     return data
   },
-  async fetchVacantErr({ commit }) {
-    await commit('setVacantErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setVacantErr', false)
   }
 }
 

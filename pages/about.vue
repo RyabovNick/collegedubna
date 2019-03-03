@@ -26,10 +26,11 @@ export default {
     VueMarkdown
   },
   async fetch({ store }) {
+    store.dispatch('about/setErrorsToFalse')
     try {
       await store.dispatch('about/fetchAbout', '3')
     } catch {
-      await store.dispatch('about/fetchAboutErr')
+      await store.commit('about/setAboutErr', true)
     }
   },
   computed: {

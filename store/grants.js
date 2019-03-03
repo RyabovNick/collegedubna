@@ -44,14 +44,10 @@ export const actions = {
     commit('setHostelinfo', data)
     return data
   },
-  async fetchGraduatejobErr({ commit }) {
-    await commit('setGraduatejobErr', true)
-  },
-  async fetchGrantsdocsErr({ commit }) {
-    await commit('setGrantsdocsErr', true)
-  },
-  async fetchHostelinfoErr({ commit }) {
-    await commit('setHostelinfoErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setGraduatejobErr', false)
+    await commit('setGrantsdocsErr', false)
+    await commit('setHostelinfoErr', false)
   }
 }
 

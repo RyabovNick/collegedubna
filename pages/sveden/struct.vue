@@ -43,10 +43,11 @@ export default {
     }
   },
   async fetch({ store }) {
+    store.dispatch('struct/setErrorsToFalse')
     try {
       await store.dispatch('struct/fetchStruct')
     } catch {
-      await store.dispatch('struct/fetchStructErr')
+      await store.commit('struct/setStructErr', true)
     }
   },
   computed: {

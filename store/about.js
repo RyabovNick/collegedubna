@@ -18,8 +18,8 @@ export const actions = {
     commit('setAbout', data[0])
     return data[0]
   },
-  async fetchAboutErr({ commit }) {
-    await commit('setAboutErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setAboutErr', false)
   }
 }
 

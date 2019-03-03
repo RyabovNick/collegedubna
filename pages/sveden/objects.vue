@@ -190,21 +190,21 @@ export default {
     }
   },
   async fetch({ store }) {
-    try {
-      await store.dispatch('objects/fetchEducode')
-    } catch (err) {
-      await store.dispatch('objects/fetchEducodeErr')
-    }
-    try {
-      await store.dispatch('objects/fetchPurposelibr')
-    } catch {
-      await store.dispatch('objects/fetchPurposelibrErr')
-    }
-    try {
-      await store.dispatch('objects/fetchPurposeeios')
-    } catch {
-      await store.dispatch('objects/fetchPurposeeiosErr')
-    }
+    store.dispatch('objects/setErrorsToFalse')
+
+    const fetchEducode = store.dispatch('objects/fetchEducode')
+    const fetchPurposelibr = store.dispatch('objects/fetchPurposelibr')
+    const fetchPurposeeios = store.dispatch('objects/fetchPurposeeios')
+
+    await fetchEducode.catch(() => {
+      store.commit('objects/setEducodeErr', true)
+    })
+    await fetchPurposelibr.catch(() => {
+      store.commit('objects/setPurposelibrErr', true)
+    })
+    await fetchPurposeeios.catch(() => {
+      store.commit('objects/setPurposeeiosErr', true)
+    })
   },
   computed: {
     ...mapGetters({

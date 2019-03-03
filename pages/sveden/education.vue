@@ -537,7 +537,7 @@ export default {
   },
   async fetch({ store }) {
     // все ошибки - false
-    store.commit('education/setErrorsDefaultValue')
+    store.dispatch('education/setErrorsToFalse')
 
     // выполняем все запросы параллельно
     const fetchEduop = store.dispatch('education/fetchEduop')
@@ -548,19 +548,19 @@ export default {
 
     // в случае ошибки ставим переменной в store = true
     await fetchEduop.catch(() => {
-      store.dispatch('education/fetchEduopErr')
+      store.commit('education/setEduopErr', true)
     })
     await fetchEduaccred.catch(() => {
-      store.dispatch('education/fetchEduaccredErr')
+      store.commit('education/setEduaccredErr', true)
     })
     await fetchChislen.catch(() => {
-      store.dispatch('education/fetchChislenErr')
+      store.commit('education/setChislenErr', true)
     })
     await fetchPriem.catch(() => {
-      store.dispatch('education/fetchPriemErr')
+      store.commit('education/setPriemErr', true)
     })
     await fetchPerevod.catch(() => {
-      store.dispatch('education/fetchPerevodErr')
+      store.commit('education/setPerevodErr', true)
     })
   },
   computed: {

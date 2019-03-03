@@ -30,10 +30,11 @@ export default {
     VueMarkdown
   },
   async fetch({ store }) {
+    store.dispatch('contacts/setErrorsToFalse')
     try {
       await store.dispatch('contacts/fetchContacts', '4')
     } catch {
-      await store.dispatch('contacts/fetchContactsErr')
+      await store.commit('contacts/setContactsErr', true)
     }
   },
   computed: {

@@ -174,10 +174,12 @@ export default {
     }
   },
   async fetch({ store }) {
+    store.dispatch('vacant/setErrorsToFalse')
+
     try {
       await store.dispatch('vacant/fetchVacant')
     } catch {
-      await store.dispatch('vacant/fetchVacantErr')
+      await store.commit('vacant/setVacantErr', true)
     }
   },
   computed: {

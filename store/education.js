@@ -70,20 +70,12 @@ export const actions = {
     commit('setPerevod', data)
     return data
   },
-  async fetchEduopErr({ commit }) {
-    await commit('setEduopErr', true)
-  },
-  async fetchEduaccredErr({ commit }) {
-    await commit('setEduaccredErr', true)
-  },
-  async fetchChislenErr({ commit }) {
-    await commit('setChislenErr', true)
-  },
-  async fetchPriemErr({ commit }) {
-    await commit('setPriemErr', true)
-  },
-  async fetchPerevodErr({ commit }) {
-    await commit('setPerevodErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setEduopErr', false)
+    await commit('setEduaccredErr', false)
+    await commit('setChislenErr', false)
+    await commit('setPriemErr', false)
+    await commit('setPerevodErr', false)
   }
 }
 
@@ -117,12 +109,5 @@ export const mutations = {
   },
   setPerevodErr(state, value) {
     state.perevodErr = value
-  },
-  setErrorsDefaultValue(state) {
-    state.eduopErr = false
-    state.priemErr = false
-    state.perevodErr = false
-    state.eduaccredErr = false
-    state.chislenErr = false
   }
 }
