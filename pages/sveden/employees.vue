@@ -14,6 +14,10 @@ table.v-table {
   max-width: 500px;
   margin: auto;
 }
+
+.pointer td {
+  cursor: pointer;
+}
 </style>
 
 <style>
@@ -36,7 +40,7 @@ table.v-table thead th {
       <v-data-table :headers="headersHeads" :items="struct" hide-actions class="elevation-1">
         <template slot="items" slot-scope="props">
           <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
-          <td itemprop="post" class="text-xs-right">{{ props.item.post }}</td>
+          <td itemprop="post" class="text-xs-left">{{ props.item.post }}</td>
           <td itemprop="telephone" class="text-xs-right">{{ props.item.telephone }}</td>
           <td itemprop="email" class="text-xs-right">
             <a :href="`mailto:${props.item.email}`">{{ props.item.email }}</a>
@@ -66,17 +70,20 @@ table.v-table thead th {
         <v-data-table
           :headers="headersTeachingStaff"
           :items="teachers"
-          class="elevation-2"
+          class="elevation-2 pointer"
           :search="search"
           rows-per-page-text="Записей на странице"
         >
           <template slot="items" slot-scope="props">
-            <tr @click="props.expanded = !props.expanded">
+            <tr
+              @click="props.expanded = !props.expanded"
+              title="Нажмите для просмотра дополнительной информации"
+            >
               <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
-              <td itemprop="post" class="text-xs-right">{{ props.item.post }}</td>
+              <td itemprop="post" class="text-xs-left">{{ props.item.post }}</td>
               <td
                 itemprop="teachingDescipline"
-                class="text-xs-right"
+                class="text-xs-left"
               >{{ props.item.teachingDescipline }}</td>
               <td itemprop="teachingLevel" class="text-xs-right">{{ props.item.teachingLevel }}</td>
               <td itemprop="teachingQual" class="text-xs-right">{{ props.item.teachingQual }}</td>

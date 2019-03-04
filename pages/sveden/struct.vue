@@ -11,7 +11,7 @@
       <v-data-table :headers="headers" :items="struct" hide-actions class="elevation-1">
         <template slot="items" slot-scope="props">
           <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
-          <td itemprop="post" class="text-xs-right">{{ props.item.post }}</td>
+          <td itemprop="post" class="text-xs-left">{{ props.item.post }}</td>
           <td itemprop="telephone" class="text-xs-right">{{ props.item.telephone }}</td>
           <td itemprop="email" class="text-xs-right">
             <a :href="`mailto:${props.item.email}`">{{ props.item.email }}</a>

@@ -19,18 +19,37 @@ table.v-table thead th {
     </section>
 
     <section v-else>
-      <v-data-table :headers="headersGraduatejob" :items="graduatejob" class="elevation-1">
-        <template slot="items" slot-scope="props">
-          <td itemprop="eduCode" class="text-xs-left">{{ props.item.code }}</td>
-          <td itemprop="eduName" class="text-xs-left">{{ props.item.name }}</td>
-          <td itemprop="year" class="text-xs-left">{{ props.item.year }}</td>
-          <td itemprop="count_graduate" class="text-xs-left">{{ props.item.count_graduate }}</td>
-          <td
-            itemprop="count_work_graduate"
-            class="text-xs-left"
-          >{{ props.item.count_work_graduate }}</td>
-        </template>
-      </v-data-table>
+      <v-card>
+        <v-card-title v-if="graduatejob.length>5">
+          <v-text-field
+            v-model="search"
+            append-icon="search"
+            label="Поиск"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headersGraduatejob"
+          :items="graduatejob"
+          :search="search"
+          class="elevation-1"
+          rows-per-page-text="Записей на странице"
+        >
+          <template slot="items" slot-scope="props">
+            <tr>
+              <td itemprop="eduCode" class="text-xs-left">{{ props.item.code }}</td>
+              <td itemprop="eduName" class="text-xs-left">{{ props.item.name }}</td>
+              <td itemprop="year" class="text-xs-left">{{ props.item.year }}</td>
+              <td itemprop="count_graduate" class="text-xs-left">{{ props.item.count_graduate }}</td>
+              <td
+                itemprop="count_work_graduate"
+                class="text-xs-left"
+              >{{ props.item.count_work_graduate }}</td>
+            </tr>
+          </template>
+        </v-data-table>
+      </v-card>
     </section>
     <br>
     <h1>Локальные нормативные акты</h1>
@@ -93,12 +112,13 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      search: '',
       headersGraduatejob: [
-        { text: 'Код программы', sortable: false, value: 'eduCode' },
+        { text: 'Код программы', sortable: false, value: 'code' },
         {
           text: 'Наименование профессии, специальности, направления подготовки',
           sortable: false,
-          value: 'eduName'
+          value: 'name'
         },
         { text: 'Год', sortable: false, value: 'year' },
         {

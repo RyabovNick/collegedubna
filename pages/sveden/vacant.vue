@@ -71,8 +71,8 @@ table.v-table thead th {
           </template>
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.code }}</td>
-            <td itemprop="eduName" class="text-xs-right">{{ props.item.name }}</td>
-            <td itemprop="eduLevel" class="text-xs-right">{{ props.item.level }}</td>
+            <td itemprop="eduName" class="text-xs-left">{{ props.item.name }}</td>
+            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.level }}</td>
             <td itemprop="eduCourse" class="text-xs-right">{{ props.item.course }}</td>
             <td itemprop="eduForm" class="text-xs-right">{{ props.item.form }}</td>
             <td itemprop="numberBFVacant" class="text-xs-right">{{ props.item.numberBFVacant }}</td>

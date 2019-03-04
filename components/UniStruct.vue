@@ -12,6 +12,10 @@
 .v-btn--size {
   width: 100%;
 }
+
+.v-btn {
+  margin: 0;
+}
 </style>
 
 <template>

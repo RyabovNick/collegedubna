@@ -16,7 +16,7 @@
     <section v-else>
       <div v-if="loading">Загрузка...</div>
       <v-card>
-        <v-card-title>
+        <v-card-title v-if="standarts.length > 6">
           <v-text-field
             v-model="search"
             append-icon="search"

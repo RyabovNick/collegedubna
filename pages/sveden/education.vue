@@ -57,7 +57,7 @@ table.v-table thead th {
     </section>
     <section v-else>
       <v-card>
-        <v-card-title>
+        <v-card-title v-if="eduop.length > 5">
           <v-text-field
             v-model="searchEduop"
             append-icon="search"
@@ -74,12 +74,15 @@ table.v-table thead th {
           rows-per-page-text="Записей на странице"
         >
           <template slot="items" slot-scope="props">
-            <tr @click="props.expanded = !props.expanded">
+            <tr
+              @click="props.expanded = !props.expanded"
+              title="Нажмите для просмотра прикрепленных документов"
+            >
               <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-              <td itemprop="eduName" class="text-xs-right">{{ props.item.eduName }}</td>
-              <td itemprop="eduLevel" class="text-xs-right">{{ props.item.eduLevel }}</td>
-              <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
-              <td itemprop="eduYear" class="text-xs-right">{{ props.item.year }}</td>
+              <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
+              <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
+              <td itemprop="eduForm" class="text-xs-left">{{ props.item.eduForm }}</td>
+              <td itemprop="eduYear" class="text-xs-left">{{ props.item.year }}</td>
               <td itemprop="eduPr" class="text-xs-right">{{ props.item.eduPr }}</td>
             </tr>
           </template>
@@ -196,7 +199,7 @@ table.v-table thead th {
     </section>
     <section v-else>
       <v-card>
-        <v-card-title>
+        <v-card-title v-if="eduaccred.length > 5">
           <v-text-field
             v-model="searchEduaccred"
             append-icon="search"
@@ -215,8 +218,8 @@ table.v-table thead th {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-right">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-right">{{ props.item.eduLevel }}</td>
+            <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
+            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
             <td itemprop="learningTerm" class="text-xs-right">{{ props.item.learningTerm }}</td>
             <td itemprop="eduAccred" class="text-xs-right">{{ props.item.dateEnd }}</td>
             <td itemprop="eduLang" class="text-xs-right">{{ props.item.language }}</td>
@@ -230,7 +233,7 @@ table.v-table thead th {
     </section>
     <section v-else>
       <v-card>
-        <v-card-title>
+        <v-card-title v-if="chislen.length > 5">
           <v-text-field
             v-model="searchChislen"
             append-icon="search"
@@ -249,8 +252,8 @@ table.v-table thead th {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-right">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-right">{{ props.item.eduLevel }}</td>
+            <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
+            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
             <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
             <td itemprop="numberBFpriem" class="text-xs-right">{{ props.item.numberBFpriem }}</td>
             <td itemprop="numberBRpriem" class="text-xs-right">{{ props.item.numberBRpriem }}</td>
@@ -266,7 +269,7 @@ table.v-table thead th {
     </section>
     <section v-else>
       <v-card>
-        <v-card-title>
+        <v-card-title v-if="priem.length > 5">
           <v-text-field
             v-model="searchPriem"
             append-icon="search"
@@ -285,8 +288,8 @@ table.v-table thead th {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-right">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-right">{{ props.item.eduLevel }}</td>
+            <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
+            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
             <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
             <td itemprop="numberBFpriem" class="text-xs-right">{{ props.item.numberBFpriem }}</td>
             <td itemprop="numberBRpriem" class="text-xs-right">{{ props.item.numberBRpriem }}</td>
@@ -302,7 +305,7 @@ table.v-table thead th {
     </section>
     <section v-else>
       <v-card>
-        <v-card-title>
+        <v-card-title v-if="perevod.length > 5">
           <v-text-field
             v-model="searchPerevod"
             append-icon="search"
@@ -321,8 +324,8 @@ table.v-table thead th {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-right">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-right">{{ props.item.eduLevel }}</td>
+            <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
+            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
             <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
             <td itemprop="numberOutPerevod" class="text-xs-right">{{ props.item.numberOutPerevod }}</td>
             <td itemprop="numberToPerevod" class="text-xs-right">{{ props.item.numberToPerevod }}</td>
