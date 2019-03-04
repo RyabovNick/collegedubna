@@ -7,16 +7,12 @@
 }
 .swiper-slide {
   background-size: cover;
-  width: 400px;
+  width: 600px;
   height: 400px;
 }
 
 img {
   height: inherit;
-}
-
-.container {
-  height: 0px;
 }
 </style>
 
@@ -51,7 +47,11 @@ export default {
         },
         pagination: {
           el: '.swiper-pagination'
-        }
+        },
+        autoplay: {
+          delay: 5000
+        },
+        loop: true
       },
       banners: [
         '/carousel/1.jpg',

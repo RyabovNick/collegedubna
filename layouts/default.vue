@@ -33,7 +33,7 @@
 }
 
 .application--wrap {
-  min-height: 0;
+  min-height: 76vh;
 }
 
 .toolbar .content {
@@ -133,6 +133,10 @@
 .v-list--group__header .v-list--group__header__prepend-icon {
   min-width: 54;
   padding-left: 16px;
+}
+
+.application .application--wrap {
+  min-height: 76vh;
 }
 </style>
 
