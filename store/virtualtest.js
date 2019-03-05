@@ -1,20 +1,5 @@
-/** template for pages storing in db */
-
 export const state = () => ({
-  page: [
-    {
-      id: 7,
-      name: 'normative',
-      content: '',
-      err: false
-    },
-    {
-      id: 8,
-      name: 'responsibilities',
-      content: '',
-      err: false
-    }
-  ],
+  page: [],
   pageErr: false
 })
 
@@ -22,7 +7,7 @@ export const getters = {
   page(state) {
     return state.page
   },
-  eduaccredErr(state) {
+  pageErr(state) {
     return state.pageErr
   }
 }
@@ -33,8 +18,8 @@ export const actions = {
     commit('setPage', data[0])
     return data[0]
   },
-  async fetchPageErr({ commit }) {
-    await commit('setPageErr', true)
+  async setErrorsToFalse({ commit }) {
+    await commit('setPageErr', false)
   }
 }
 

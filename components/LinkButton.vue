@@ -13,6 +13,11 @@
 .theme--light.v-btn {
   color: #ffffff;
 }
+
+.v-btn__content {
+  white-space: inherit;
+  text-align: center;
+}
 </style>
 
 <template>
