@@ -12,46 +12,15 @@ Completed:
 budget,  
 document,
 paid_edu
-
-TODO: common, education, eduStandarts, employees, grants, struct, vacant
+common, education, eduStandarts, employees, grants, struct, vacant
 check styles, errors
-
-TODO objects: Check styles. Maybe in the future change 1st table loading. Now its whole data loading. Idea: not doing API calls for every eduCode; make 1 call and access to data with vuex filters and getters with arguments
 
 TODO style from every page to main.css!!!
 
-TODO dynamic pages need to check if current architecture working good (or need create store for every page)
+TODO about, spec, abitur, cantacts rewrite like environment
 
-TODO environment
+TODO virtual_tour galleria from database !!!
 
-TODO virtual_tour galleria from database
+TODO news: photos/docs
 
-TODO availability links to docs on local
-
-TODO road_map links to docs on local
-
-TODO normative list of links on external pages
-
-TODO equipment links to docs on local
-
-TODO career_guidance links on other pages/sites
-
-part career_guidance - TODO virtual_test text
-
-TODO social_support text, link on files
-
-TODO employment links on other pages/sites
-
-part employment:
-
-    TODO normative links
-
-    TODO responsibilities links/text
-
-    TODO rights links/text
-
-    TODO work links/text
-
-TODO: news, need to check styles on homepage
-
-TODO: loading from server SYNC!!! DO IT ASYNC! (started in education)
+TODO main.page - news looking awful(

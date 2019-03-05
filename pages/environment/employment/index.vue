@@ -32,13 +32,13 @@ export default {
   },
   data() {
     return {
-      link: './normative',
+      link: './employment/normative',
       msg: 'Нормативная база',
-      link2: './responsibilities',
+      link2: './employment/responsibilities',
       msg2: 'Обязанности работодателей',
-      link3: './rights',
+      link3: './employment/rights',
       msg3: 'Права инвалидов',
-      link4: './work',
+      link4: './employment/work',
       msg4: 'Трудоустройство',
       link5: 'http://www.profk-dubna.ru/',
       msg5: 'Аналитический центр "Образование и карьера"'
