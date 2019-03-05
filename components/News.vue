@@ -18,6 +18,10 @@
   display: inline-table;
 }
 
+.v-card__title--primary {
+  padding-top: 6px;
+}
+
 .headline {
   font-size: 20px;
   text-align: center;
@@ -26,10 +30,15 @@
 .date {
   text-align: center;
   padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .alignCenter {
   margin: auto;
+}
+
+.mr-3 {
+  margin-right: 0px !important;
 }
 
 /*от 405 до 600*/
@@ -46,8 +55,11 @@
 
             <v-card-title primary-title>
               <div class="alignCenter">
+                <div class="date">
+                  <v-icon size="24px" class="mr-3">calendar_today</v-icon>
+                  {{ tnews.date_now | formatDateNews}}
+                </div>
                 <h3 class="headline mb-0">{{ tnews.title }}</h3>
-                <div class="date">{{ tnews.date_now | formatDate}}</div>
               </div>
             </v-card-title>
           </v-card>
