@@ -1,15 +1,20 @@
 export const state = () => ({
   news: [],
+  newsPhotos: [],
   newsErr: false,
   newsDoesNotExist: false,
   // pagination
   listNews: [],
-  countPages: 0
+  countPages: 0,
+  errorPages: false
 })
 
 export const getters = {
   news(state) {
     return state.news
+  },
+  newsPhotos(state) {
+    return state.newsPhotos
   },
   newsErr(state) {
     return state.newsErr
@@ -23,17 +28,29 @@ export const getters = {
   countPages(state) {
     // console.log('typeof: ' + typeof state.countPages)
     return state.countPages
+  },
+  errorPages(state) {
+    return state.errorPages
   }
 }
 
 export const actions = {
   async fetchNews({ commit }, id) {
-    const data = await this.$axios.$get(`news/${id}`)
-    if (data.length === 0) {
-      commit('setNewsDoesNotExist', true)
-    } else {
-      commit('setNews', data[0])
-    }
+    const data = this.$axios.$get(`news/${id}`)
+    const photos = this.$axios.$get(`news/${id}/photo`)
+
+    await data.then(response => {
+      if (response.length === 0) {
+        commit('setNewsDoesNotExist', true)
+      } else {
+        commit('setNews', response[0])
+      }
+    })
+
+    await photos.then(response => {
+      commit('setNewsPhotos', response)
+    })
+
     return data
   },
   async fetchNewsErr({ commit }) {
@@ -56,6 +73,9 @@ export const mutations = {
   setNews(state, news) {
     state.news = news
   },
+  setNewsPhotos(state, photos) {
+    state.newsPhotos = photos
+  },
   setNewsErr(state, value) {
     state.newsErr = value
   },
@@ -67,5 +87,8 @@ export const mutations = {
   },
   setPageNews(state, value) {
     state.listNews = value
+  },
+  setErrorPages(state, value) {
+    state.errorPages = value
   }
 }

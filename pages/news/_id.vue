@@ -6,6 +6,22 @@ section .warning {
 
 <style scoped>
 @import '~/assets/css/markdown.css';
+
+.gallery-top {
+  height: 41%;
+  width: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+}
+
+img {
+  max-height: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
 
 
@@ -20,6 +36,16 @@ section .warning {
     <section v-else>
       <h1>{{news.title}}</h1>
       <vue-markdown class="md-helper">{{news.content}}</vue-markdown>
+      <div v-swiper:mySwiper="swiperOption" class="gallery-top">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(photo, i) in newsPhotos" :key="i">
+            <img :src="`http://college.uni-dubna.ru/files/${photo.link}`">
+          </div>
+        </div>
+        <div class="swiper-button-next swiper-button" slot="button-next"></div>
+        <div class="swiper-button-prev swiper-button" slot="button-prev"></div>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </div>
     </section>
   </v-app>
 </template>
@@ -34,7 +60,20 @@ export default {
   },
   data() {
     return {
-      newsDoesnotExist: 'К сожалению, заданной новости не существует.'
+      newsDoesnotExist: 'К сожалению, заданной новости не существует.',
+      swiperOption: {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination'
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        spaceBetween: 150,
+        autoHeight: true,
+        grabCursor: true
+      }
     }
   },
   async fetch({ store, params }) {
@@ -47,6 +86,7 @@ export default {
   computed: {
     ...mapGetters({
       news: 'news/news',
+      newsPhotos: 'news/newsPhotos',
       newsErr: 'news/newsErr',
       newsDoesNotExist: 'news/newsDoesNotExist',
       errMessage: 'helpers/errMessage'
