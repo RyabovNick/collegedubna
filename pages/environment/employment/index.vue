@@ -1,7 +1,6 @@
 <style scoped>
 .nuxt-link {
-  margin-left: auto;
-  margin-right: auto;
+  display: contents;
 }
 </style>
 

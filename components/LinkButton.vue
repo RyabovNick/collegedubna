@@ -1,7 +1,11 @@
 <style scoped>
 .v-btn--size {
-  min-width: 25em;
+  min-width: 20em;
   max-width: 55em;
+}
+
+.v-btn--large {
+  height: 70px;
 }
 
 .v-btn {
@@ -13,8 +17,10 @@
 .theme--light.v-btn {
   color: #ffffff;
 }
+</style>
 
-.v-btn__content {
+<style>
+.v-btn__text--white-space .v-btn__content {
   white-space: inherit;
   text-align: center;
 }
@@ -27,7 +33,7 @@
     depressed
     large
     color="rgb(21, 101, 192)"
-    class="v-btn--size"
+    class="v-btn--size v-btn__text--white-space"
   >{{ msg }}</v-btn>
 </template>
 
