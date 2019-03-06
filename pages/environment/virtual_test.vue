@@ -4,7 +4,7 @@
 
 <template>
   <v-app>
-    <section v-if="$store.state.virtualtest.pageErr">
+    <section v-if="page[pageId].err">
       <v-alert
         :value="true"
         color="error"
@@ -13,7 +13,7 @@
       >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
     <section v-else>
-      <vue-markdown class="md-helper">{{ $store.state.virtualtest.page.content }}</vue-markdown>
+      <vue-markdown class="md-helper">{{ page[pageId].content }}</vue-markdown>
     </section>
   </v-app>
 </template>
@@ -23,19 +23,26 @@ import VueMarkdown from 'vue-markdown'
 import { mapGetters } from 'vuex'
 
 export default {
+  data() {
+    return {
+      pageId: 5
+    }
+  },
   components: {
     VueMarkdown
   },
   async fetch({ store }) {
-    store.dispatch('virtualtest/setErrorsToFalse')
+    // fetch can't get this so we need pageId in two places(
+    const pageId = 5
+    store.dispatch('pages/setErrorsToFalse', pageId)
     try {
-      await store.dispatch('virtualtest/fetchPage', '6')
+      await store.dispatch('pages/fetchPage', pageId)
     } catch {
-      await store.commit('virtualtest/setPageErr', true)
+      await store.commit('pages/setPageErr', { id: pageId, value: true })
     }
   },
   computed: {
-    ...mapGetters(['page', 'pageErr', 'errMessage'])
+    ...mapGetters({ page: 'pages/page' })
   }
 }
 </script>

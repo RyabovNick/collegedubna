@@ -8,11 +8,16 @@
 
 <template>
   <v-app>
-    <section v-if="aboutErr">
-      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
+    <section v-if="page[pageId].err">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
     </section>
     <section v-else>
-      <vue-markdown class="md-helper">{{ about.content }}</vue-markdown>
+      <vue-markdown class="md-helper">{{ page[pageId].content }}</vue-markdown>
     </section>
   </v-app>
 </template>
@@ -22,23 +27,26 @@ import VueMarkdown from 'vue-markdown'
 import { mapGetters } from 'vuex'
 
 export default {
+  data() {
+    return {
+      pageId: 2
+    }
+  },
   components: {
     VueMarkdown
   },
   async fetch({ store }) {
-    store.dispatch('about/setErrorsToFalse')
+    // fetch can't get this so we need pageId in two places(
+    const pageId = 2
+    store.dispatch('pages/setErrorsToFalse', pageId)
     try {
-      await store.dispatch('about/fetchAbout', '3')
+      await store.dispatch('pages/fetchPage', pageId)
     } catch {
-      await store.commit('about/setAboutErr', true)
+      await store.commit('pages/setPageErr', { id: pageId, value: true })
     }
   },
   computed: {
-    ...mapGetters({
-      about: 'about/about',
-      aboutErr: 'about/aboutErr',
-      errMessage: 'helpers/errMessage'
-    })
+    ...mapGetters({ page: 'pages/page' })
   }
 }
 </script>
