@@ -20,13 +20,6 @@ table.v-table {
 }
 </style>
 
-<style>
-table.v-table thead th {
-  white-space: initial;
-}
-</style>
-
-
 <template>
   <v-app>
     <h1>Руководство</h1>

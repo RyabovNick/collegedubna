@@ -51,7 +51,7 @@
 
 <template>
   <v-app>
-    <main-gallery></main-gallery>
+    <!-- <main-gallery></main-gallery> -->
     <h1>Новостная лента</h1>
     <section v-if="errorLastNews">
       <v-alert
@@ -88,7 +88,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import MainGallery from '../components/GalleryMain'
+// import MainGallery from '../components/GalleryMain'
 
 export default {
   data() {
@@ -98,7 +98,7 @@ export default {
     }
   },
   components: {
-    MainGallery
+    // MainGallery
   },
   async fetch({ store }) {
     store.commit('news/setErrorLastNews', false)

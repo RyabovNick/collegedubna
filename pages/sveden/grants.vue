@@ -5,12 +5,6 @@
 }
 </style>
 
-<style>
-table.v-table thead th {
-  white-space: initial;
-}
-</style>
-
 <template>
   <v-app>
     <h1>Трудойстройство выпускников</h1>

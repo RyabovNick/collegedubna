@@ -26,7 +26,12 @@ table.v-table td a:first-child img {
 }
 
 .v-content .v-content__wrap {
-  max-width: 1150px;
+  /* max-width: 1150px; */
   margin-left: auto;
   margin-right: auto;
+}
+
+/*возможность переноса слов в заголовке на новую строку*/
+table.v-datatable.v-table thead th {
+  white-space: initial;
 }
