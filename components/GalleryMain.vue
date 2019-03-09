@@ -1,14 +1,14 @@
 <style scoped>
 .swiper-inner {
   width: 1000px;
-  height: 400px;
+  height: 250px;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 .swiper-slide {
   background-size: cover;
-  width: 600px;
-  height: 400px;
+  width: 375px;
+  height: 250px;
 }
 
 img {
