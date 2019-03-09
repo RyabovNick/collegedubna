@@ -47,50 +47,62 @@
 
 <template>
   <v-container>
-    <v-layout row wrap>
-      <v-flex lg4 md6 sm6 xs12 v-for="tnews in news" :key="tnews.id">
-        <router-link :to="`/news/${tnews.id}`">
-          <v-card hover height="97.1%">
-            <v-img :src="`http://college.uni-dubna.ru/files/${tnews.logo}`" height="18.429em"></v-img>
+    <section v-if="errorLastNews">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
+    </section>
+    <section v-else>
+      <v-layout row wrap>
+        <v-flex lg4 md6 sm6 xs12 v-for="news in lastNews" :key="news.id">
+          <router-link :to="`/news/${news.id}`">
+            <v-card hover height="97.1%">
+              <v-img :src="`http://college.uni-dubna.ru/files/${news.logo}`" height="18.429em"></v-img>
 
-            <v-card-title primary-title>
-              <div class="alignCenter">
-                <div class="date">
-                  <v-icon size="24px" class="mr-3">calendar_today</v-icon>
-                  {{ tnews.date_now | formatDateNews}}
+              <v-card-title primary-title>
+                <div class="alignCenter">
+                  <div class="date">
+                    <v-icon size="24px" class="mr-3">calendar_today</v-icon>
+                    {{ news.date_now | formatDateNews}}
+                  </div>
+                  <h3 class="headline mb-0">{{ news.title }}</h3>
                 </div>
-                <h3 class="headline mb-0">{{ tnews.title }}</h3>
-              </div>
-            </v-card-title>
-          </v-card>
-        </router-link>
-      </v-flex>
-    </v-layout>
+              </v-card-title>
+            </v-card>
+          </router-link>
+        </v-flex>
+      </v-layout>
+    </section>
   </v-container>
 </template>
 
 <script>
-import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
     return {
       news: [],
       loading: true,
-      errored: false,
-      card_text:
-        'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'
+      errored: false
     }
   },
-  mounted() {
-    axios
-      .get('http://localhost:3000/api/news/page/0')
-      .then(response => (this.news = response.data))
-      .catch(error => {
-        console.log(error)
-        this.errored = true
-      })
-      .finally(() => (this.loading = false))
+  async fetch({ store }) {
+    store.commit('news/setErrorLastNews', false)
+    try {
+      await store.dispatch('news/fetchLastNews')
+    } catch {
+      store.commit('news/setErrorLastNews', true)
+    }
+  },
+  computed: {
+    ...mapGetters({
+      lastNews: 'news/lastNews',
+      errorLastNews: 'news/errorLastNews'
+    })
   }
 }
 </script>

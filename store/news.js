@@ -6,7 +6,10 @@ export const state = () => ({
   // pagination
   listNews: [],
   countPages: 0,
-  errorPages: false
+  errorPages: false,
+  // mainpage
+  lastNews: [],
+  errorLastNews: false
 })
 
 export const getters = {
@@ -31,6 +34,12 @@ export const getters = {
   },
   errorPages(state) {
     return state.errorPages
+  },
+  lastNews(state) {
+    return state.lastNews
+  },
+  errorLastNews(state) {
+    return state.errorLastNews
   }
 }
 
@@ -66,6 +75,11 @@ export const actions = {
     const data = await this.$axios.$get(`news/page/${id}`)
     commit('setPageNews', data)
     return data
+  },
+  async fetchLastNews({ commit }) {
+    const data = await this.$axios.$get(`news/page/0`)
+    commit('setLastNews', data)
+    return data
   }
 }
 
@@ -90,5 +104,11 @@ export const mutations = {
   },
   setErrorPages(state, value) {
     state.errorPages = value
+  },
+  setLastNews(state, value) {
+    state.lastNews = value
+  },
+  setErrorLastNews(state, value) {
+    state.errorLastNews = value
   }
 }
