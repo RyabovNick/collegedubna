@@ -101,3 +101,57 @@ ul {
 .theme--light.application {
   color: #2c3e50;
 }
+
+@media (-webkit-min-device-pixel-ratio: 2.1),
+  only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .md-helper >>> h1 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .md-helper >>> h2 {
+    font-size: 1.25em;
+    text-align: center;
+    padding-bottom: 1em;
+    padding-top: 1em;
+  }
+
+  .md-helper >>> h3 {
+    font-size: 1em;
+    text-align: center;
+    padding-bottom: 0.8em;
+    padding-top: 0.8em;
+  }
+
+  .md-helper >>> p {
+    font-size: 1em;
+    text-align: left;
+    line-height: 1.5;
+    margin-bottom: 0.25em;
+    text-indent: 35px;
+  }
+
+  .md-helper >>> th {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+    font-size: 0.8em;
+  }
+
+  .md-helper >>> td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+    font-size: 0.8em;
+  }
+
+  .md-helper >>> ol,
+  ul {
+    padding-left: 70px;
+  }
+
+  .md-helper >>> li {
+    font-size: 1em;
+    line-height: 1.5;
+  }
+}

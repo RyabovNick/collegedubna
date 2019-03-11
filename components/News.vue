@@ -15,7 +15,7 @@
 }
 
 .v-card__title {
-  display: inline-table;
+  display: inherit;
 }
 
 .v-card__title--primary {

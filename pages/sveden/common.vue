@@ -1,20 +1,3 @@
-<style>
-.elevation-1 {
-  max-width: 1100px;
-  margin: auto;
-}
-
-.v-datatable tbody tr td {
-  font-size: 14px;
-}
-
-.elevation-1 .v-datatable thead tr th {
-  color: black;
-  font-size: 16px;
-  font-weight: bold;
-}
-</style>
-
 <template>
   <v-app>
     <h1>Основные сведения</h1>

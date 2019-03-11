@@ -7,6 +7,7 @@
 .md-helper >>> p {
   text-align: center;
   line-height: 2.1;
+  text-indent: 0;
 }
 </style>
 

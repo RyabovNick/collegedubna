@@ -19,7 +19,7 @@
 }
 
 .v-card__title {
-  display: inline-table;
+  display: inherit;
 }
 
 .v-card__title--primary {
@@ -43,6 +43,10 @@
 
 .mr-3 {
   margin-right: 0px !important;
+}
+
+a {
+  text-decoration: none;
 }
 
 /*от 405 до 600*/

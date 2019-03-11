@@ -35,3 +35,34 @@ table.v-table td a:first-child img {
 table.v-datatable.v-table thead th {
   white-space: initial;
 }
+
+/*sveden styles*/
+.elevation-1 {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.v-table.v-datatable tbody tr td {
+  font-size: 14px;
+}
+
+.elevation-1 .v-datatable thead tr th {
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2.1),
+  only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .application--wrap h1 {
+    font-size: 1.5em;
+  }
+
+  .application--wrap h3 {
+    font-size: 1.25em !important;
+  }
+
+  .v-table.v-datatable tbody tr td {
+    font-size: 12px;
+  }
+}
