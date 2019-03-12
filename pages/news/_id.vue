@@ -39,7 +39,7 @@ img {
       <div v-swiper:mySwiper="swiperOption" class="gallery-top">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(photo, i) in newsPhotos" :key="i">
-            <img :src="`http://college.uni-dubna.ru/files/${photo.link}`">
+            <img :src="`/files/${photo.link}`">
           </div>
         </div>
         <div class="swiper-button-next swiper-button" slot="button-next"></div>
