@@ -36,7 +36,7 @@ img {
     <section v-else>
       <h1>{{news.title}}</h1>
       <vue-markdown class="md-helper">{{news.content}}</vue-markdown>
-      <div v-swiper:mySwiper="swiperOption" class="gallery-top">
+      <div v-if="newsPhotos.length !== 0" v-swiper:mySwiper="swiperOption" class="gallery-top">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(photo, i) in newsPhotos" :key="i">
             <img :src="`/files/${photo.link}`">
@@ -62,7 +62,7 @@ export default {
     return {
       newsDoesnotExist: 'К сожалению, заданной новости не существует.',
       swiperOption: {
-        loop: true,
+        loop: false,
         pagination: {
           el: '.swiper-pagination'
         },

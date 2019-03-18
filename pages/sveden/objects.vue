@@ -40,7 +40,7 @@ h2 {
                     <td itemprop="discipline" class="text-xs-left">{{ props.item.discipline }}</td>
                     <td itemprop="cabname" class="text-xs-right">{{ props.item.cabname }}</td>
                     <td itemprop="address" class="text-xs-right">{{ props.item.address }}</td>
-                    <td itemprop="disabled" class="text-xs-right">{{ props.item.disabled }}</td>
+                    <td itemprop="disabled" class="text-xs-right">{{ props.item.forDisabled }}</td>
                   </template>
                 </v-data-table>
               </v-card>
@@ -143,7 +143,7 @@ export default {
           text:
             '	Приспособленность помещений для использования лицами с ограниченными возможностями здоровья',
           sortable: false,
-          value: 'disabled'
+          value: 'dorDisabled'
         }
       ],
       headersPurposelibr: [
