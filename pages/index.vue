@@ -49,13 +49,38 @@ a {
   text-decoration: none;
 }
 
+.swiper-inner {
+  width: 1000px;
+  height: 250px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.swiper-slide {
+  background-size: cover;
+  width: 375px;
+  height: 250px;
+}
+
+img {
+  height: inherit;
+}
+
 /*от 405 до 600*/
 </style>
 
 
 <template>
   <v-app>
-    <main-gallery></main-gallery>
+    <v-container v-if="!galleryErr">
+      <div v-swiper:mySwiper="swiperOption" class="gallery-top">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(banner, i) in gallery" :key="i">
+            <img :src="banner.link">
+          </div>
+        </div>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </div>
+    </v-container>
     <h1>Новостная лента</h1>
     <section v-if="errorLastNews">
       <v-alert
@@ -92,20 +117,44 @@ a {
 
 <script>
 import { mapGetters } from 'vuex'
-import MainGallery from '../components/GalleryMain'
 
 export default {
   data() {
     return {
       link: '/news/page/1',
-      msg: 'Архив новостей'
+      msg: 'Архив новостей',
+      // carousel options
+      swiperOption: {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true
+        },
+        pagination: {
+          el: '.swiper-pagination'
+        },
+        autoplay: {
+          delay: 5000
+        },
+        loop: true
+      }
     }
-  },
-  components: {
-    MainGallery
   },
   async fetch({ store }) {
     store.commit('news/setErrorLastNews', false)
+    store.commit('gallery/setGalleryErr', false)
+    try {
+      await store.dispatch('gallery/fetchGallery')
+    } catch {
+      store.commit('gallery/setGalleryErr', true)
+    }
+
     try {
       await store.dispatch('news/fetchLastNews')
     } catch {
@@ -115,7 +164,9 @@ export default {
   computed: {
     ...mapGetters({
       lastNews: 'news/lastNews',
-      errorLastNews: 'news/errorLastNews'
+      errorLastNews: 'news/errorLastNews',
+      gallery: 'gallery/gallery',
+      galleryErr: 'gallery/galleryErr'
     })
   }
 }
