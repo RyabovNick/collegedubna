@@ -217,7 +217,7 @@
           </div>
         </router-link>
       </div>
-      <v-btn icon large>
+      <v-btn icon large to="/special">
         <v-icon title="Версия для слабовидящих">remove_red_eye</v-icon>
       </v-btn>
     </v-toolbar>
