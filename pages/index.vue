@@ -27,7 +27,7 @@
 }
 
 .headline {
-  font-size: 20px;
+  font-size: 18px !important;
   text-align: center;
 }
 
@@ -39,6 +39,10 @@
 
 .alignCenter {
   margin: auto;
+}
+
+.alignCenter b {
+  font-weight: 500;
 }
 
 .mr-3 {
@@ -57,12 +61,30 @@ a {
 }
 .swiper-slide {
   background-size: cover;
-  width: 375px;
-  height: 250px;
+  width: 600px;
+  height: 400px;
 }
 
 img {
   height: inherit;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2.1),
+  only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .headline {
+    font-size: 16px !important;
+  }
+  .swiper-inner {
+    width: 1000px;
+    height: 250px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .swiper-slide {
+    background-size: cover;
+    width: 375px;
+    height: 250px;
+  }
 }
 
 /*от 405 до 600*/
@@ -101,9 +123,11 @@ img {
                 <div class="alignCenter">
                   <div class="date">
                     <v-icon size="24px" class="mr-3">calendar_today</v-icon>
-                    {{ news.date_now | formatDateNews}}
+                    <b>{{ news.date_now | formatDateNews}}</b>
                   </div>
-                  <h3 class="headline mb-0">{{ news.title }}</h3>
+                  <h3 class="headline mb-0">
+                    <b>{{ news.title }}</b>
+                  </h3>
                 </div>
               </v-card-title>
             </v-card>

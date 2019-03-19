@@ -33,9 +33,9 @@ table.v-table {
       <v-data-table :headers="headersHeads" :items="struct" hide-actions class="elevation-1">
         <template slot="items" slot-scope="props">
           <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
-          <td itemprop="post" class="text-xs-left">{{ props.item.post }}</td>
-          <td itemprop="telephone" class="text-xs-right">{{ props.item.telephone }}</td>
-          <td itemprop="email" class="text-xs-right">
+          <td itemprop="post" class="text-xs-center">{{ props.item.post }}</td>
+          <td itemprop="telephone" class="text-xs-center">{{ props.item.telephone }}</td>
+          <td itemprop="email" class="text-xs-center">
             <a :href="`mailto:${props.item.email}`">{{ props.item.email }}</a>
           </td>
         </template>
@@ -73,18 +73,18 @@ table.v-table {
               title="Нажмите для просмотра дополнительной информации"
             >
               <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
-              <td itemprop="post" class="text-xs-left">{{ props.item.post }}</td>
+              <td itemprop="post" class="text-xs-center">{{ props.item.post }}</td>
               <td
                 itemprop="teachingDescipline"
-                class="text-xs-left"
+                class="text-xs-center"
               >{{ props.item.teachingDescipline }}</td>
-              <td itemprop="teachingLevel" class="text-xs-right">{{ props.item.teachingLevel }}</td>
-              <td itemprop="teachingQual" class="text-xs-right">{{ props.item.teachingQual }}</td>
-              <td itemprop="degree" class="text-xs-right">{{ props.item.degree }}</td>
-              <td itemprop="academStat" class="text-xs-right">{{ props.item.academStat }}</td>
+              <td itemprop="teachingLevel" class="text-xs-center">{{ props.item.teachingLevel }}</td>
+              <td itemprop="teachingQual" class="text-xs-center">{{ props.item.teachingQual }}</td>
+              <td itemprop="degree" class="text-xs-center">{{ props.item.degree }}</td>
+              <td itemprop="academStat" class="text-xs-center">{{ props.item.academStat }}</td>
               <td
                 itemprop="employeeQualification"
-                class="text-xs-right"
+                class="text-xs-center"
               >{{ props.item.employeeQualification }}</td>
             </tr>
           </template>

@@ -33,12 +33,12 @@
           <template slot="items" slot-scope="props">
             <tr>
               <td itemprop="eduCode" class="text-xs-left">{{ props.item.code }}</td>
-              <td itemprop="eduName" class="text-xs-left">{{ props.item.name }}</td>
-              <td itemprop="year" class="text-xs-left">{{ props.item.year }}</td>
-              <td itemprop="count_graduate" class="text-xs-left">{{ props.item.count_graduate }}</td>
+              <td itemprop="eduName" class="text-xs-center">{{ props.item.name }}</td>
+              <td itemprop="year" class="text-xs-center">{{ props.item.year }}</td>
+              <td itemprop="count_graduate" class="text-xs-center">{{ props.item.count_graduate }}</td>
               <td
                 itemprop="count_work_graduate"
-                class="text-xs-left"
+                class="text-xs-center"
               >{{ props.item.count_work_graduate }}</td>
             </tr>
           </template>
@@ -60,7 +60,7 @@
       >
         <template slot="items" slot-scope="props">
           <td itemprop="eduCode eduName" class="text-xs-left">{{ props.item.name }}</td>
-          <td itemprop="eduStandartDoc" class="text-xs-right">
+          <td itemprop="eduStandartDoc" class="text-xs-center">
             <a :href="`/files/${props.item.link}`" target="_blank">
               <img
                 class="icon-size"
@@ -70,7 +70,7 @@
               >
             </a>
           </td>
-          <td itemprop="eduStandartDoc" class="text-xs-right">
+          <td itemprop="eduStandartDoc" class="text-xs-center">
             <a :href="`/files/${props.item.link}`" download target="_self">
               <img
                 class="icon-size"
@@ -93,7 +93,7 @@
       <v-data-table :items="hostelinfo" class="elevation-1" hide-actions hide-headers>
         <template slot="items" slot-scope="props">
           <td>{{ props.item.name }}</td>
-          <td class="text-xs-right" :itemprop="`${props.item.tag}`">{{ props.item.value }}</td>
+          <td class="text-xs-center" :itemprop="`${props.item.tag}`">{{ props.item.value }}</td>
         </template>
       </v-data-table>
     </section>

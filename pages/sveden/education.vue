@@ -71,11 +71,11 @@ h2 {
               title="Нажмите для просмотра прикрепленных документов"
             >
               <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-              <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
-              <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
-              <td itemprop="eduForm" class="text-xs-left">{{ props.item.eduForm }}</td>
-              <td itemprop="eduYear" class="text-xs-left">{{ props.item.year }}</td>
-              <td itemprop="eduPr" class="text-xs-right">{{ props.item.eduPr }}</td>
+              <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
+              <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>
+              <td itemprop="eduForm" class="text-xs-center">{{ props.item.eduForm }}</td>
+              <td itemprop="eduYear" class="text-xs-center">{{ props.item.year }}</td>
+              <td itemprop="eduPr" class="text-xs-center">{{ props.item.eduPr }}</td>
             </tr>
           </template>
           <template slot="expand" slot-scope="props">
@@ -210,11 +210,11 @@ h2 {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
-            <td itemprop="learningTerm" class="text-xs-right">{{ props.item.learningTerm }}</td>
-            <td itemprop="eduAccred" class="text-xs-right">{{ props.item.dateEnd }}</td>
-            <td itemprop="eduLang" class="text-xs-right">{{ props.item.language }}</td>
+            <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
+            <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>
+            <td itemprop="learningTerm" class="text-xs-center">{{ props.item.learningTerm }}</td>
+            <td itemprop="eduAccred" class="text-xs-center">{{ props.item.dateEnd }}</td>
+            <td itemprop="eduLang" class="text-xs-center">{{ props.item.language }}</td>
           </template>
         </v-data-table>
       </v-card>
@@ -244,13 +244,13 @@ h2 {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
-            <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
-            <td itemprop="numberBFpriem" class="text-xs-right">{{ props.item.numberBFpriem }}</td>
-            <td itemprop="numberBRpriem" class="text-xs-right">{{ props.item.numberBRpriem }}</td>
-            <td itemprop="numberBMpriem" class="text-xs-right">{{ props.item.numberBMpriem }}</td>
-            <td itemprop="numberPpriem" class="text-xs-right">{{ props.item.numberPpriem }}</td>
+            <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
+            <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>
+            <td itemprop="eduForm" class="text-xs-center">{{ props.item.eduForm }}</td>
+            <td itemprop="numberBFpriem" class="text-xs-center">{{ props.item.numberBFpriem }}</td>
+            <td itemprop="numberBRpriem" class="text-xs-center">{{ props.item.numberBRpriem }}</td>
+            <td itemprop="numberBMpriem" class="text-xs-center">{{ props.item.numberBMpriem }}</td>
+            <td itemprop="numberPpriem" class="text-xs-center">{{ props.item.numberPpriem }}</td>
           </template>
         </v-data-table>
       </v-card>
@@ -280,13 +280,13 @@ h2 {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
-            <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
-            <td itemprop="numberBFpriem" class="text-xs-right">{{ props.item.numberBFpriem }}</td>
-            <td itemprop="numberBRpriem" class="text-xs-right">{{ props.item.numberBRpriem }}</td>
-            <td itemprop="numberBMpriem" class="text-xs-right">{{ props.item.numberBMpriem }}</td>
-            <td itemprop="numberPpriem" class="text-xs-right">{{ props.item.numberPpriem }}</td>
+            <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
+            <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>
+            <td itemprop="eduForm" class="text-xs-center">{{ props.item.eduForm }}</td>
+            <td itemprop="numberBFpriem" class="text-xs-center">{{ props.item.numberBFpriem }}</td>
+            <td itemprop="numberBRpriem" class="text-xs-center">{{ props.item.numberBRpriem }}</td>
+            <td itemprop="numberBMpriem" class="text-xs-center">{{ props.item.numberBMpriem }}</td>
+            <td itemprop="numberPpriem" class="text-xs-center">{{ props.item.numberPpriem }}</td>
           </template>
         </v-data-table>
       </v-card>
@@ -316,13 +316,13 @@ h2 {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-            <td itemprop="eduName" class="text-xs-left">{{ props.item.eduName }}</td>
-            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.eduLevel }}</td>
-            <td itemprop="eduForm" class="text-xs-right">{{ props.item.eduForm }}</td>
-            <td itemprop="numberOutPerevod" class="text-xs-right">{{ props.item.numberOutPerevod }}</td>
-            <td itemprop="numberToPerevod" class="text-xs-right">{{ props.item.numberToPerevod }}</td>
-            <td itemprop="numberResPerevod" class="text-xs-right">{{ props.item.numberResPerevod }}</td>
-            <td itemprop="numberExpPerevod" class="text-xs-right">{{ props.item.numberExpPerevod }}</td>
+            <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
+            <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>
+            <td itemprop="eduForm" class="text-xs-center">{{ props.item.eduForm }}</td>
+            <td itemprop="numberOutPerevod" class="text-xs-center">{{ props.item.numberOutPerevod }}</td>
+            <td itemprop="numberToPerevod" class="text-xs-center">{{ props.item.numberToPerevod }}</td>
+            <td itemprop="numberResPerevod" class="text-xs-center">{{ props.item.numberResPerevod }}</td>
+            <td itemprop="numberExpPerevod" class="text-xs-center">{{ props.item.numberExpPerevod }}</td>
           </template>
         </v-data-table>
       </v-card>

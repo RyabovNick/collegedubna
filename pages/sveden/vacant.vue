@@ -65,14 +65,14 @@ h2 {
           </template>
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.code }}</td>
-            <td itemprop="eduName" class="text-xs-left">{{ props.item.name }}</td>
-            <td itemprop="eduLevel" class="text-xs-left">{{ props.item.level }}</td>
-            <td itemprop="eduCourse" class="text-xs-right">{{ props.item.course }}</td>
-            <td itemprop="eduForm" class="text-xs-right">{{ props.item.form }}</td>
-            <td itemprop="numberBFVacant" class="text-xs-right">{{ props.item.numberBFVacant }}</td>
-            <td itemprop="numberBRVacant" class="text-xs-right">{{ props.item.numberBRVacant }}</td>
-            <td itemprop="numberBMVacant" class="text-xs-right">{{ props.item.numberBMVacant }}</td>
-            <td itemprop="numberPVacant" class="text-xs-right">{{ props.item.numberPVacant }}</td>
+            <td itemprop="eduName" class="text-xs-center">{{ props.item.name }}</td>
+            <td itemprop="eduLevel" class="text-xs-center">{{ props.item.level }}</td>
+            <td itemprop="eduCourse" class="text-xs-center">{{ props.item.course }}</td>
+            <td itemprop="eduForm" class="text-xs-center">{{ props.item.form }}</td>
+            <td itemprop="numberBFVacant" class="text-xs-center">{{ props.item.numberBFVacant }}</td>
+            <td itemprop="numberBRVacant" class="text-xs-center">{{ props.item.numberBRVacant }}</td>
+            <td itemprop="numberBMVacant" class="text-xs-center">{{ props.item.numberBMVacant }}</td>
+            <td itemprop="numberPVacant" class="text-xs-center">{{ props.item.numberPVacant }}</td>
           </template>
         </v-data-table>
       </v-card>

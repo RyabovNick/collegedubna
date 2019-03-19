@@ -38,9 +38,9 @@ h2 {
                 >
                   <template slot="items" slot-scope="props">
                     <td itemprop="discipline" class="text-xs-left">{{ props.item.discipline }}</td>
-                    <td itemprop="cabname" class="text-xs-right">{{ props.item.cabname }}</td>
-                    <td itemprop="address" class="text-xs-right">{{ props.item.address }}</td>
-                    <td itemprop="disabled" class="text-xs-right">{{ props.item.forDisabled }}</td>
+                    <td itemprop="cabname" class="text-xs-center">{{ props.item.cabname }}</td>
+                    <td itemprop="address" class="text-xs-center">{{ props.item.address }}</td>
+                    <td itemprop="disabled" class="text-xs-center">{{ props.item.forDisabled }}</td>
                   </template>
                 </v-data-table>
               </v-card>
@@ -68,8 +68,8 @@ h2 {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="name" class="text-xs-left">{{ props.item.name }}</td>
-            <td itemprop="area" class="text-xs-right">{{ props.item.area }}</td>
-            <td itemprop="placecount" class="text-xs-right">{{ props.item.placecount }}</td>
+            <td itemprop="area" class="text-xs-center">{{ props.item.area }}</td>
+            <td itemprop="placecount" class="text-xs-center">{{ props.item.placecount }}</td>
             <td itemprop="docs" class="text-xs-center">
               <a
                 v-if="props.item.docs !== null"
@@ -106,7 +106,7 @@ h2 {
         >
           <template slot="items" slot-scope="props">
             <td itemprop="name" class="text-xs-left">{{ props.item.name }}</td>
-            <td itemprop="quantity" class="text-xs-right">{{ props.item.quantity }}</td>
+            <td itemprop="quantity" class="text-xs-center">{{ props.item.quantity }}</td>
           </template>
         </v-data-table>
       </v-card>

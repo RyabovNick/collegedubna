@@ -34,6 +34,7 @@ table.v-table td a:first-child img {
 /*возможность переноса слов в заголовке на новую строку*/
 table.v-datatable.v-table thead th {
   white-space: initial;
+  text-align: center !important;
 }
 
 /*sveden styles*/
@@ -64,5 +65,11 @@ table.v-datatable.v-table thead th {
 
   .v-table.v-datatable tbody tr td {
     font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 1904px) {
+  .container {
+    max-width: 1185px !important;
   }
 }
