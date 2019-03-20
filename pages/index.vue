@@ -135,7 +135,15 @@ img {
         </v-flex>
       </v-layout>
     </section>
-    <v-btn nuxt :to="link" depressed large color="rgb(21, 101, 192)" class="v-btn--size">{{ msg }}</v-btn>
+    <v-btn
+      outline
+      nuxt
+      :to="link"
+      depressed
+      large
+      color="rgb(21, 101, 192)"
+      class="v-btn--size"
+    >{{ msg }}</v-btn>
   </v-app>
 </template>
 

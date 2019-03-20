@@ -136,7 +136,7 @@
   line-height: 14px;
 }
 
-span {
+.navAlign {
   padding-top: 12px;
   display: inline-block;
   vertical-align: middle;
@@ -192,7 +192,7 @@ span {
             <v-list-tile slot="activator">
               <v-list-tile-content>
                 <v-list-tile-title>
-                  <span>{{ item.text }}</span>
+                  <span class="navAlign">{{ item.text }}</span>
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
@@ -203,7 +203,7 @@ span {
                 </v-list-tile-action>
                 <v-list-tile-content>
                   <v-list-tile-title>
-                    <span>{{ child.text }}</span>
+                    <span class="navAlign">{{ child.text }}</span>
                   </v-list-tile-title>
                 </v-list-tile-content>
               </router-link>
@@ -216,7 +216,7 @@ span {
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  <span>{{ item.text }}</span>
+                  <span class="navAlign">{{ item.text }}</span>
                 </v-list-tile-title>
               </v-list-tile-content>
             </router-link>
