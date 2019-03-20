@@ -1,0 +1,73 @@
+<style scoped>
+@import '~/assets/css/markdown.css';
+
+.md-helper {
+  margin-bottom: 2em;
+}
+.md-helper >>> p {
+  text-align: center;
+  line-height: 2.1;
+  text-indent: 0;
+}
+</style>
+
+<template>
+  <v-app :style="{background: backgroundColor}">
+    <section v-if="page[pageId].err">
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ $store.state.helpers.errMessage }}</v-alert>
+    </section>
+    <section v-else>
+      <vue-markdown
+        class="md-helper"
+        :style="{fontSize: fontSize + 'px',
+                      color: color,
+                      'font-family': fontFamily,
+                      'letter-spacing': letterSpacing + 'px',
+                      'font-weight': fontWeight}"
+      >{{ page[pageId].content }}</vue-markdown>
+    </section>
+  </v-app>
+</template>
+
+<script>
+import VueMarkdown from 'vue-markdown'
+import { mapGetters } from 'vuex'
+
+export default {
+  layout: 'special',
+  data() {
+    return {
+      pageId: 3
+    }
+  },
+  components: {
+    VueMarkdown
+  },
+  async fetch({ store }) {
+    // fetch can't get this so we need pageId in two places(
+    const pageId = 3
+    store.dispatch('pages/setErrorsToFalse', pageId)
+    try {
+      await store.dispatch('pages/fetchPage', pageId)
+    } catch {
+      await store.commit('pages/setPageErr', { id: pageId, value: true })
+    }
+  },
+  computed: {
+    ...mapGetters({
+      page: 'pages/page',
+      fontSize: 'special/fontSize',
+      color: 'special/color',
+      backgroundColor: 'special/backgroundColor',
+      fontFamily: 'special/fontFamily',
+      letterSpacing: 'special/letterSpacing',
+      fontWeight: 'special/fontWeight'
+    })
+  }
+}
+</script>

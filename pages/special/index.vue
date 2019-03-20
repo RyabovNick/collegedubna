@@ -62,7 +62,13 @@ a {
 
 <template>
   <v-app :style="{background: backgroundColor}">
-    <h1>Новостная лента</h1>
+    <h1
+      :style="{fontSize: (15 + fontSize) + 'px',
+                      color: color,
+                      'font-family': fontFamily,
+                      'letter-spacing': letterSpacing + 'px',
+                      'font-weight': fontWeight}"
+    >Новостная лента</h1>
     <section v-if="errorLastNews">
       <v-alert
         :value="true"
@@ -74,7 +80,7 @@ a {
     <section v-else>
       <v-layout row wrap>
         <v-flex lg4 md6 sm6 xs12 v-for="news in lastNews" :key="news.id">
-          <router-link :to="`/news/${news.id}`">
+          <router-link :to="`/special/news/${news.id}`">
             <v-card hover height="97.1%" :style="{background: backgroundColor}">
               <v-card-title primary-title>
                 <div class="alignCenter">

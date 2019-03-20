@@ -2,7 +2,7 @@
   <v-app id="special" :style="{background: backgroundColor}">
     <v-navigation-drawer fixed v-model="drawer" app>
       <v-list dense>
-        <v-list-tile v-for="(nav, i) in navigations" :key="i">
+        <v-list-tile v-for="(nav, i) in navigations" :key="i" nuxt :to="nav.to">
           <v-list-tile-action>
             <v-icon>{{nav.icon}}</v-icon>
           </v-list-tile-action>
@@ -64,8 +64,16 @@
                   <v-icon dark></v-icon>
                 </v-btn>
               </v-list-tile-action>
-
-              <v-list-tile-title>Текст</v-list-tile-title>
+              <v-list-tile-action>
+                <v-btn fab dark small color="#a9e44d" @click="changeColors(3)">
+                  <v-icon dark></v-icon>
+                </v-btn>
+              </v-list-tile-action>
+              <v-list-tile-action>
+                <v-btn fab dark small color="#4d4b43" @click="changeColors(4)">
+                  <v-icon dark></v-icon>
+                </v-btn>
+              </v-list-tile-action>
             </v-list-tile>
 
             <v-list-tile>
@@ -137,7 +145,9 @@ export default {
     themes: [
       { fontColor: 'black', backgroundColor: 'white' },
       { fontColor: 'white', backgroundColor: 'black' },
-      { fontColor: '#063462', backgroundColor: '#9dd1ff' }
+      { fontColor: '#063462', backgroundColor: '#9dd1ff' },
+      { fontColor: '#a9e44d', backgroundColor: '#3b2716' },
+      { fontColor: '#4d4b43', backgroundColor: '#f7f3d6' }
     ]
   }),
   computed: {
