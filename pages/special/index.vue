@@ -87,8 +87,9 @@ a {
                       :style="{fontSize: fontSize + 'px',
                       color: color,
                       'font-family': fontFamily,
-                      'letter-spacing': letterSpacing + 'px'}"
-                    >{{ news.title }} - {{ fontSize }}</b>
+                      'letter-spacing': letterSpacing + 'px',
+                      'font-weight': fontWeight}"
+                    >{{ news.title }}</b>
                   </h3>
                 </div>
               </v-card-title>
@@ -109,11 +110,7 @@ export default {
   data() {
     return {
       link: '/news/page/1',
-      msg: 'Архив новостей',
-      fontSize: 15,
-      color: 'black',
-      fontFamily: 'Times New Roman',
-      letterSpacing: 0
+      msg: 'Архив новостей'
     }
   },
   async fetch({ store }) {
@@ -128,7 +125,12 @@ export default {
   computed: {
     ...mapGetters({
       lastNews: 'news/lastNews',
-      errorLastNews: 'news/errorLastNews'
+      errorLastNews: 'news/errorLastNews',
+      fontSize: 'special/fontSize',
+      color: 'special/color',
+      fontFamily: 'special/fontFamily',
+      letterSpacing: 'special/letterSpacing',
+      fontWeight: 'special/fontWeight'
     })
   }
 }
