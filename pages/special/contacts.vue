@@ -1,5 +1,5 @@
 <style scoped>
-@import '~/assets/css/markdown.css';
+@import '~/assets/css/markdownSpecial.css';
 
 .md-helper {
   margin-bottom: 2em;

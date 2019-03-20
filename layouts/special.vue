@@ -1,13 +1,19 @@
 <template>
   <v-app id="special" :style="{background: backgroundColor}">
-    <v-navigation-drawer fixed v-model="drawer" app>
+    <v-navigation-drawer fixed v-model="drawer" app :style="{background: backgroundColor}">
       <v-list dense>
         <v-list-tile v-for="(nav, i) in navigations" :key="i" nuxt :to="nav.to">
           <v-list-tile-action>
             <v-icon>{{nav.icon}}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>{{nav.text}}</v-list-tile-title>
+            <v-list-tile-title
+              :style="{fontSize: (fontSize-3) + 'px',
+                      color: color,
+                      'font-family': fontFamily,
+                      'letter-spacing': letterSpacing + 'px',
+                      'font-weight': fontWeight}"
+            >{{nav.text}}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -16,7 +22,11 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="140" offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn color="indigo" dark v-on="on">Настройки шрифта</v-btn>
+          <v-btn color="#152ca7" dark v-on="on">Настройки шрифта</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn icon large to="/">
+            <v-icon title="Обычная версия">remove_red_eye</v-icon>
+          </v-btn>
         </template>
         <v-card>
           <v-list>
@@ -60,17 +70,17 @@
                 </v-btn>
               </v-list-tile-action>
               <v-list-tile-action>
-                <v-btn fab dark small color="#063462" @click="changeColors(2)">
+                <v-btn fab dark small color="#9dd1ff" @click="changeColors(2)">
                   <v-icon dark></v-icon>
                 </v-btn>
               </v-list-tile-action>
               <v-list-tile-action>
-                <v-btn fab dark small color="#a9e44d" @click="changeColors(3)">
+                <v-btn fab dark small color="#3b2716" @click="changeColors(3)">
                   <v-icon dark></v-icon>
                 </v-btn>
               </v-list-tile-action>
               <v-list-tile-action>
-                <v-btn fab dark small color="#4d4b43" @click="changeColors(4)">
+                <v-btn fab dark small color="#f7f3d6" @click="changeColors(4)">
                   <v-icon dark></v-icon>
                 </v-btn>
               </v-list-tile-action>
@@ -116,9 +126,6 @@
         <nuxt/>
       </v-container>
     </v-content>
-    <v-footer color="indigo" app>
-      <span class="white--text">&copy; 2019</span>
-    </v-footer>
   </v-app>
 </template>
 
@@ -133,6 +140,7 @@ export default {
     //
     drawer: null,
     navigations: [
+      { icon: 'home', text: 'Главная', to: '/special' },
       { icon: 'account_balance', text: 'О нас', to: '/special/about' },
       { icon: 'people', text: 'Абитуриентам', to: '/special/abitur' },
       {
@@ -140,11 +148,13 @@ export default {
         text: 'О профессиях и специальностях',
         to: '/special/speciality'
       },
-      { icon: 'contacts', text: 'Контакты', to: '/special/contacts' }
+      { icon: 'info', text: 'Основные сведения', to: '/special/sveden' },
+      { icon: 'contacts', text: 'Контакты', to: '/special/contacts' },
+      { icon: 'remove_red_eye', text: 'Обычная версия', to: '/' }
     ],
     themes: [
-      { fontColor: 'black', backgroundColor: 'white' },
       { fontColor: 'white', backgroundColor: 'black' },
+      { fontColor: 'black', backgroundColor: 'white' },
       { fontColor: '#063462', backgroundColor: '#9dd1ff' },
       { fontColor: '#a9e44d', backgroundColor: '#3b2716' },
       { fontColor: '#4d4b43', backgroundColor: '#f7f3d6' }
