@@ -123,7 +123,7 @@ img {
                 <div class="alignCenter">
                   <div class="date">
                     <v-icon size="24px" class="mr-3">calendar_today</v-icon>
-                    <b>{{ news.date_now | formatDateNews}}</b>
+                    <b :title="news.date_now | fullDate">{{ news.date_now | formatDateNews}}</b>
                   </div>
                   <h3 class="headline mb-0">
                     <b>{{ news.title }}</b>

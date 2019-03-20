@@ -17,3 +17,10 @@ Vue.filter('formatDateNews', value => {
     return moment(value).fromNow()
   }
 })
+
+Vue.filter('fullDate', value => {
+  moment.locale('ru')
+  if (value) {
+    return moment(String(value)).format('HH:mm DD MMMM YYYY')
+  }
+})

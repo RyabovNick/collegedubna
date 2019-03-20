@@ -123,6 +123,25 @@
 .theme--light.v-btn {
   color: #ffffff;
 }
+
+/*Перенос не умещающихся пунктов меню на новую строку*/
+.v-list__tile__title,
+.v-list__tile__sub-title {
+  white-space: inherit;
+  overflow: inherit;
+}
+
+.v-list__tile__title {
+  height: 40px;
+  line-height: 14px;
+}
+
+span {
+  padding-top: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 15px;
+}
 </style>
 
 <style>
@@ -172,7 +191,9 @@
           >
             <v-list-tile slot="activator">
               <v-list-tile-content>
-                <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+                <v-list-tile-title>
+                  <span>{{ item.text }}</span>
+                </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
             <v-list-tile v-for="(child, i) in item.children" :key="i">
@@ -181,7 +202,9 @@
                   <v-icon>{{ child.icon }}</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                  <v-list-tile-title>{{ child.text }}</v-list-tile-title>
+                  <v-list-tile-title>
+                    <span>{{ child.text }}</span>
+                  </v-list-tile-title>
                 </v-list-tile-content>
               </router-link>
             </v-list-tile>
@@ -192,7 +215,9 @@
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
-                <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+                <v-list-tile-title>
+                  <span>{{ item.text }}</span>
+                </v-list-tile-title>
               </v-list-tile-content>
             </router-link>
           </v-list-tile>
