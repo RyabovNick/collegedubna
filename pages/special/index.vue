@@ -61,7 +61,7 @@ a {
 
 
 <template>
-  <v-app>
+  <v-app :style="{background: backgroundColor}">
     <h1>Новостная лента</h1>
     <section v-if="errorLastNews">
       <v-alert
@@ -75,12 +75,18 @@ a {
       <v-layout row wrap>
         <v-flex lg4 md6 sm6 xs12 v-for="news in lastNews" :key="news.id">
           <router-link :to="`/news/${news.id}`">
-            <v-card hover height="97.1%">
+            <v-card hover height="97.1%" :style="{background: backgroundColor}">
               <v-card-title primary-title>
                 <div class="alignCenter">
                   <div class="date">
                     <v-icon size="24px" class="mr-3">calendar_today</v-icon>
-                    <b>{{ news.date_now | formatDateNews}}</b>
+                    <b
+                      :style="{fontSize: fontSize + 'px',
+                      color: color,
+                      'font-family': fontFamily,
+                      'letter-spacing': letterSpacing + 'px',
+                      'font-weight': fontWeight}"
+                    >{{ news.date_now | formatDateNews}}</b>
                   </div>
                   <h3 class="headline mb-0">
                     <b
@@ -128,6 +134,7 @@ export default {
       errorLastNews: 'news/errorLastNews',
       fontSize: 'special/fontSize',
       color: 'special/color',
+      backgroundColor: 'special/backgroundColor',
       fontFamily: 'special/fontFamily',
       letterSpacing: 'special/letterSpacing',
       fontWeight: 'special/fontWeight'

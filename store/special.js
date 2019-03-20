@@ -3,14 +3,14 @@ export const state = () => ({
   color: 'black',
   backgroundColor: 'white',
   fontFamily: 'Arial',
-  letterSpacing: 0,
-  fontWeight: 500
-  //   defaultFontSize: 16,
-  //   defaultColor: 'black',
-  //   defaultBackgroundColor: 'white',
-  //   defaultFontFamily: 'Arial',
-  //   defaultLetterSpacing: 0,
-  //   defaultFontWeight: 500
+  letterSpacing: 0.0,
+  fontWeight: 500,
+  defaultFontSize: 16,
+  defaultColor: 'black',
+  defaultBackgroundColor: 'white',
+  defaultFontFamily: 'Arial',
+  defaultLetterSpacing: 0.0,
+  defaultFontWeight: 500
 })
 
 export const getters = {
@@ -35,24 +35,66 @@ export const getters = {
 }
 
 export const actions = {
-  changeFontSize({ commit }, value) {
+  // размер шрифта от 0 до 60
+  changeFontSize({ commit, state }, value) {
+    let newFontSize = null
     if (value) {
-      commit('setFontSize', state.fontSize + 1)
+      newFontSize =
+        state.fontSize + 1 >= 60 ? state.fontSize : state.fontSize + 1
+      commit('setFontSize', newFontSize)
     } else {
-      commit('setFontSize', state.fontSize - 1)
+      newFontSize = state.fontSize - 1 < 0 ? state.fontSize : state.fontSize - 1
+      commit('setFontSize', newFontSize)
     }
+  },
+  changeFontFamily({ commit }, value) {
+    value
+      ? commit('setFontFamily', 'Arial')
+      : commit('setFontFamily', 'Times New Roman')
+  },
+  changeFontWeight({ commit, state }, value) {
+    let newFontWeight = null
+    if (value) {
+      newFontWeight =
+        state.fontWeight + 1 >= 1000 ? state.fontWeight : state.fontWeight + 100
+      commit('setFontWeight', newFontWeight)
+    } else {
+      newFontWeight =
+        state.fontWeight - 1 < 0 ? state.fontWeight : state.fontWeight - 100
+      commit('setFontWeight', newFontWeight)
+    }
+  },
+  changeLetterSpacing({ commit, state }, value) {
+    let newLetterSpacing = null
+    if (value) {
+      newLetterSpacing =
+        state.letterSpacing + 0.1 >= 10
+          ? state.letterSpacing
+          : state.letterSpacing + 0.1
+      commit('setLetterSpacing', newLetterSpacing)
+    } else {
+      newLetterSpacing =
+        state.letterSpacing - 0.1 < 0 ? 0 : state.letterSpacing - 0.1
+      commit('setLetterSpacing', newLetterSpacing)
+    }
+  },
+  changeColor({ commit }, value) {
+    commit('setColor', value)
+  },
+  changeBackgroundColor({ commit }, value) {
+    commit('setBackgroundColor', value)
   }
 }
 
 export const mutations = {
-  //   setDefault(state) {
-  //     state.fontSize = state.defaultFontSize
-  //     state.color = state.defaultColor
-  //     state.backgroundColor = state.defaultBackgroundColor
-  //     state.fontFamily = state.defaultFontFamily
-  //     state.letterSpacing = state.defaultLetterSpacing
-  //     state.fontWeight = state.defaultFontWeight
-  //   },
+  setDefault(state) {
+    state.fontSize = state.defaultFontSize
+    state.color = state.defaultColor
+    state.backgroundColor = state.defaultBackgroundColor
+    state.fontFamily = state.defaultFontFamily
+    state.letterSpacing = state.defaultLetterSpacing
+    state.fontWeight = state.defaultFontWeight
+  },
   setFontSize(state, value) {
     state.fontSize = value
   },
