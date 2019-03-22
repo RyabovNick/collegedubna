@@ -1,32 +1,47 @@
+<style scoped>
+.nuxt-link {
+  display: contents;
+}
+</style>
+
 <template>
   <v-app>
     <h1>Нормативное обеспечение</h1>
-    <link-button :link="link" :msg="msg"/>
-    <link-button :link="link2" :msg="msg2"/>
-    <link-button :link="link3" :msg="msg3"/>
-    <link-button :link="link4" :msg="msg4"/>
+    <section v-if="environmentErr">
+      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
+    </section>
+    <section v-else class="text-xs-center" v-for="(env, i) in environment" :key="i">
+      <nuxt-link v-if="env.type === 1" :to="env.link" class="nuxt-link">
+        <link-button :msg="env.link_name"/>
+      </nuxt-link>
+      <link-button v-else :link="env.link" :msg="env.link_name"/>
+    </section>
   </v-app>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import LinkButton from '../../components/LinkButton'
+
 export default {
   components: {
     LinkButton
   },
-  data() {
-    return {
-      link:
-        'http://inklysia.uni-dubna.ru/normativnye-dokumenty-federalnogo-znacheniya',
-      msg: 'Нормативные документы федерального значения',
-      link2:
-        'http://inklysia.uni-dubna.ru/normativnye-dokumenty-moskovskoj-oblasti',
-      msg2: 'Нормативные документы московской области',
-      link3: 'http://inklysia.uni-dubna.ru/lokalnye-akty',
-      msg3: 'Локальные акты',
-      link4: 'http://inklysia.uni-dubna.ru/metodicheskoe-obespechenie',
-      msg4: 'Методическое обеспечение'
+  async fetch({ store }) {
+    const pageId = 4
+    store.dispatch('environment/setErrorsToFalse')
+    try {
+      await store.dispatch('environment/fetchEnvironment', pageId)
+    } catch {
+      await store.commit('environment/setEnvironmentErr', true)
     }
+  },
+  computed: {
+    ...mapGetters({
+      environment: 'environment/environment',
+      environmentErr: 'environment/environmentErr',
+      errMessage: 'helpers/errMessage'
+    })
   }
 }
 </script>
