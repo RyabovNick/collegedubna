@@ -142,6 +142,18 @@
   vertical-align: middle;
   line-height: 15px;
 }
+
+/* menu */
+.menu--style {
+  font-size: 16px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.menu--style--title {
+  height: 28px;
+  line-height: 17px;
+}
 </style>
 
 <style>
@@ -242,6 +254,20 @@
           </div>
         </router-link>
       </div>
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-toolbar-title v-on="on" class="menu--style">
+            <span>Конкурсы и олимпиады</span>
+            <v-icon dark>arrow_drop_down</v-icon>
+          </v-toolbar-title>
+        </template>
+
+        <v-list>
+          <v-list-tile v-for="(item, i) in itemsMenu" :key="i" :to="item.link" nuxt>
+            <v-list-tile-title class="menu--style--title" v-text="item.text"></v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
       <v-btn icon large to="/special">
         <v-icon title="Версия для слабовидящих">remove_red_eye</v-icon>
       </v-btn>
@@ -283,6 +309,12 @@ export default {
     return {
       clipped: true,
       drawer: false,
+      itemsMenu: [
+        { text: 'WorldSkills', link: '/competitions/worldskills' },
+        { text: 'Олимпиады', link: '/competitions/olimpiads' },
+        { text: 'Конкурсы', link: '/competitions/contest' },
+        { text: 'Демонстрационный экзамен', link: '/competitions/demo_exam' }
+      ],
       items: [
         { icon: 'home', text: 'Главная', link: '/' },
         { icon: 'account_balance', text: 'О нас', link: '/about' },
