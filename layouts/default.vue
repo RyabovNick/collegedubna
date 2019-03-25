@@ -366,6 +366,24 @@ export default {
             { text: 'Трудоустройство', link: '/environment/employment' }
           ]
         },
+        {
+          icon: 'people',
+          'icon-alt': 'people',
+          text: 'Конкурсы и олимпиады',
+          model: false,
+          children: [
+            {
+              text: 'WorldSkills',
+              link: '/competitions/contest'
+            },
+            { text: 'Олимпиады', link: '/competitions/olimpiads' },
+            { text: 'Конкурсы', link: '/competitions/contest' },
+            {
+              text: 'Демонстрационный экзамен',
+              link: '/competitions/demo_exam'
+            }
+          ]
+        },
         { icon: 'contacts', text: 'Контакты', link: '/contacts' },
         {
           icon: 'remove_red_eye',

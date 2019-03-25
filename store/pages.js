@@ -61,6 +61,30 @@ export const state = () => ({
       name: 'work',
       content: '',
       err: false
+    },
+    {
+      id: 11,
+      name: 'WorldSkills',
+      content: '',
+      err: false
+    },
+    {
+      id: 12,
+      name: 'Олимпиады',
+      content: '',
+      err: false
+    },
+    {
+      id: 13,
+      name: 'Конкурсы',
+      content: '',
+      err: false
+    },
+    {
+      id: 14,
+      name: 'Демонстрационный экзамен',
+      content: '',
+      err: false
     }
   ],
   pageErr: false
