@@ -77,7 +77,7 @@ export const actions = {
     return data
   },
   async fetchLastNews({ commit }) {
-    const data = await this.$axios.$get(`news/page/0`)
+    const data = await this.$axios.$get(`lastsixnews`)
     commit('setLastNews', data)
     return data
   }

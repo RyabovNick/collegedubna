@@ -399,8 +399,8 @@ export default {
           ]
         },
         {
-          icon: 'people',
-          'icon-alt': 'people',
+          icon: 'computer',
+          'icon-alt': 'computer',
           text: 'Конкурсы и олимпиады',
           model: false,
           children: [
