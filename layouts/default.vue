@@ -148,11 +148,21 @@
   font-size: 16px;
   font-weight: normal;
   cursor: pointer;
+  display: none;
 }
 
 .menu--style--title {
   height: 28px;
   line-height: 17px;
+}
+
+.toolbar__items {
+  padding-top: 8em;
+}
+
+.headerlogo {
+  height: 125px;
+  margin-top: 62px;
 }
 </style>
 
@@ -236,8 +246,9 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar :clipped-left="clipped" fixed app color="blue darken-3">
+    <v-toolbar :clipped-left="clipped" color="blue darken-3" extended>
       <v-toolbar-side-icon @click="drawer = !drawer"/>
+      <img class="headerlogo" src="/image/headerlogowhite.png">
       <router-link to="/">
         <v-toolbar-title v-text="title"/>
       </router-link>
@@ -254,7 +265,7 @@
           </div>
         </router-link>
       </div>
-      <v-menu offset-y>
+      <v-menu offset-y style="display: none">
         <template v-slot:activator="{ on }">
           <v-toolbar-title v-on="on" class="menu--style">
             <span>Конкурсы и олимпиады</span>
