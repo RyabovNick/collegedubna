@@ -121,7 +121,7 @@ export default {
   layout: 'special',
   data() {
     return {
-      link: '/news/page/1',
+      link: '/special/news/page/1',
       msg: 'Архив новостей'
     }
   },

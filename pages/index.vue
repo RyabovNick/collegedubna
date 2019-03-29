@@ -117,7 +117,7 @@ img {
         <v-flex lg4 md6 sm6 xs12 v-for="news in lastNews" :key="news.id">
           <router-link :to="`/news/${news.id}`">
             <v-card hover height="97.1%">
-              <v-img :src="`http://college.uni-dubna.ru/files/${news.logo}`" height="18.429em"></v-img>
+              <v-img :src="`/files/${news.logo}`" height="18.429em"></v-img>
 
               <v-card-title primary-title>
                 <div class="alignCenter">

@@ -417,7 +417,7 @@ export default {
           children: [
             {
               text: 'WorldSkills',
-              link: '/competitions/contest'
+              link: '/competitions/worldskills'
             },
             { text: 'Олимпиады', link: '/competitions/olimpiads' },
             { text: 'Конкурсы', link: '/competitions/contest' },
