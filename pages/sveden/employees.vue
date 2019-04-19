@@ -59,56 +59,57 @@ table.v-table {
             hide-details
           ></v-text-field>
         </v-card-title>
-
-        <v-data-table
-          :headers="headersTeachingStaff"
-          :items="teachers"
-          class="elevation-2 pointer"
-          :search="search"
-          rows-per-page-text="Записей на странице"
-        >
-          <template slot="items" slot-scope="props">
-            <tr
-              @click="props.expanded = !props.expanded"
-              title="Нажмите для просмотра дополнительной информации"
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-data-table
+              :headers="headersTeachingStaff"
+              :items="teachers"
+              class="elevation-2 pointer"
+              :search="search"
+              rows-per-page-text="Записей на странице"
             >
-              <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
-              <td itemprop="post" class="text-xs-center">{{ props.item.post }}</td>
-              <td
-                itemprop="teachingDescipline"
-                class="text-xs-center"
-              >{{ props.item.teachingDescipline }}</td>
-              <td itemprop="teachingLevel" class="text-xs-center">{{ props.item.teachingLevel }}</td>
-              <td itemprop="teachingQual" class="text-xs-center">{{ props.item.teachingQual }}</td>
-              <td itemprop="degree" class="text-xs-center">{{ props.item.degree }}</td>
-              <td itemprop="academStat" class="text-xs-center">{{ props.item.academStat }}</td>
-              <td
-                itemprop="employeeQualification"
-                class="text-xs-center"
-              >{{ props.item.employeeQualification }}</td>
-            </tr>
+              <template slot="items" slot-scope="props">
+                <tr v-on="on" @click="props.expanded = !props.expanded">
+                  <td itemprop="fio" class="text-xs-left">{{ props.item.fio }}</td>
+                  <td itemprop="post" class="text-xs-center">{{ props.item.post }}</td>
+                  <td
+                    itemprop="teachingDescipline"
+                    class="text-xs-center"
+                  >{{ props.item.teachingDescipline }}</td>
+                  <td itemprop="teachingLevel" class="text-xs-center">{{ props.item.teachingLevel }}</td>
+                  <td itemprop="teachingQual" class="text-xs-center">{{ props.item.teachingQual }}</td>
+                  <td itemprop="degree" class="text-xs-center">{{ props.item.degree }}</td>
+                  <td itemprop="academStat" class="text-xs-center">{{ props.item.academStat }}</td>
+                  <td
+                    itemprop="employeeQualification"
+                    class="text-xs-center"
+                  >{{ props.item.employeeQualification }}</td>
+                </tr>
+              </template>
+              <template slot="expand" slot-scope="props">
+                <v-card flat>
+                  <v-card-text itemprop="profDevelopment">
+                    <b>Повышение квалификации:</b>
+                    {{ props.item.profDevelopment }}
+                  </v-card-text>
+                  <v-card-text itemprop="genExperience">
+                    <b>Общий стаж работы:</b>
+                    {{ props.item.genExperience }}
+                  </v-card-text>
+                  <v-card-text itemprop="specExperience">
+                    <b>Стаж работы по специальности:</b>
+                    {{ props.item.specExperience }}
+                  </v-card-text>
+                </v-card>
+              </template>
+              <template
+                slot="pageText"
+                slot-scope="props"
+              >Записей {{ props.pageStart }} - {{ props.pageStop }} из {{ props.itemsLength }}</template>
+            </v-data-table>
           </template>
-          <template slot="expand" slot-scope="props">
-            <v-card flat>
-              <v-card-text itemprop="profDevelopment">
-                <b>Повышение квалификации:</b>
-                {{ props.item.profDevelopment }}
-              </v-card-text>
-              <v-card-text itemprop="genExperience">
-                <b>Общий стаж работы:</b>
-                {{ props.item.genExperience }}
-              </v-card-text>
-              <v-card-text itemprop="specExperience">
-                <b>Стаж работы по специальности:</b>
-                {{ props.item.specExperience }}
-              </v-card-text>
-            </v-card>
-          </template>
-          <template
-            slot="pageText"
-            slot-scope="props"
-          >Записей {{ props.pageStart }} - {{ props.pageStop }} из {{ props.itemsLength }}</template>
-        </v-data-table>
+          <span>Нажмите для просмотра прикрепленных документов</span>
+        </v-tooltip>
       </v-card>
     </section>
   </v-app>
