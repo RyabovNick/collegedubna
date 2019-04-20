@@ -61,6 +61,16 @@
   .v-toolbar__title {
     display: none !important;
   }
+
+  .headerlogo {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .headerlogo {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -86,6 +96,12 @@
 
   .toolbar__items {
     margin-right: 2em;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .toolbar__items {
+    padding-top: 8em;
   }
 }
 
@@ -154,10 +170,6 @@
 .menu--style--title {
   height: 28px;
   line-height: 17px;
-}
-
-.toolbar__items {
-  padding-top: 8em;
 }
 
 .headerlogo {
@@ -246,7 +258,13 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar :clipped-left="clipped" color="blue darken-3" extended>
+
+    <v-toolbar
+      :clipped-left="clipped"
+      color="blue darken-3"
+      :extended="this.$vuetify.breakpoint.name === 'xs' || this.$vuetify.breakpoint.name === 'sm' ? false : true"
+      app
+    >
       <v-toolbar-side-icon @click="drawer = !drawer"/>
       <img class="headerlogo" src="/image/headerlogowhite.png">
       <router-link to="/">
@@ -286,6 +304,7 @@
     <v-content>
       <v-container>
         <nuxt/>
+        {{ this.$vuetify.breakpoint }}
       </v-container>
     </v-content>
     <v-footer height="auto">
