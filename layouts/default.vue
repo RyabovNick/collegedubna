@@ -304,7 +304,6 @@
     <v-content>
       <v-container>
         <nuxt/>
-        {{ this.$vuetify.breakpoint }}
       </v-container>
     </v-content>
     <v-footer height="auto">
