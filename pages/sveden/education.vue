@@ -64,11 +64,13 @@ h2 {
               :headers="headersEduop"
               :items="eduop"
               :search="searchEduop"
+              :expand="expand"
+              item-key="id"
               class="elevation-2 pointer"
               rows-per-page-text="Записей на странице"
             >
-              <template slot="items" slot-scope="props">
-                <tr v-on="on" @click="props.expanded = !props.expanded">
+              <template v-slot:items="props">
+                <tr @click="props.expanded = !props.expanded">
                   <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
                   <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
                   <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>
@@ -77,7 +79,7 @@ h2 {
                   <td itemprop="eduPr" class="text-xs-center">{{ props.item.eduPr }}</td>
                 </tr>
               </template>
-              <template slot="expand" slot-scope="props">
+              <template v-slot:expand="props">
                 <v-card flat>
                   <v-card-text itemprop="opMain">
                     <p>Описание образовательной программы</p>
@@ -341,6 +343,7 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      expand: false,
       searchEduop: '',
       headersEduop: [
         { text: 'Код', align: 'left', sortable: false, value: 'eduCode' },
