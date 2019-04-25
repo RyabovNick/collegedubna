@@ -47,6 +47,7 @@
 .v-toolbar__title {
   display: inline-table;
   color: #ffffff;
+  padding-left: 10px;
 }
 
 .toolbar__items a {
@@ -57,39 +58,37 @@
   vertical-align: bottom;
 }
 
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 700px) {
   .v-toolbar__title {
     display: none !important;
   }
 
+  /* .headerlogo {
+    display: none;
+  } */
+}
+
+/* @media only screen and (max-width: 960px) {
   .headerlogo {
     display: none;
   }
+} */
+
+.hidden-sm-and-down {
+  display: inline-block;
 }
 
-@media only screen and (max-width: 960px) {
-  .headerlogo {
-    display: none;
-  }
+.toolbar__items {
+  margin-right: 2em;
 }
 
-@media only screen and (min-width: 1200px) {
-  .hidden-sm-and-down {
-    display: inline-block;
-  }
-
-  .toolbar__items {
-    margin-right: 2em;
-  }
-}
-
-@media only screen and (min-width: 670px) {
+@media only screen and (min-width: 700px) {
   .v-toolbar__title .hidden-sm-and-down {
     display: initial !important;
   }
 }
 
-@media only screen and (max-width: 1200px) {
+/* @media only screen and (max-width: 1200px) {
   .hidden-sm-and-down {
     display: none !important;
   }
@@ -97,9 +96,9 @@
   .toolbar__items {
     margin-right: 2em;
   }
-}
+} */
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 960px) and (max-width: 1264px) {
   .toolbar__items {
     padding-top: 8em;
   }
@@ -173,8 +172,14 @@
 }
 
 .headerlogo {
-  height: 125px;
-  margin-top: 62px;
+  height: 60px;
+  padding-top: 5px;
+  margin-top: 0px;
+}
+
+/*first child*/
+.v-toolbar__content > div:first-of-type {
+  margin-left: -350px;
 }
 </style>
 
@@ -262,11 +267,13 @@
     <v-toolbar
       :clipped-left="clipped"
       color="blue darken-3"
-      :extended="this.$vuetify.breakpoint.name === 'xs' || this.$vuetify.breakpoint.name === 'sm' ? false : true"
+      :extended="this.$vuetify.breakpoint.name === 'md' ? true : false"
       app
     >
       <v-toolbar-side-icon @click="drawer = !drawer"/>
-      <img class="headerlogo" src="/image/headerlogowhite.png">
+      <router-link to="/">
+        <img class="headerlogo" src="/image/headerlogowhite.png">
+      </router-link>
       <router-link to="/">
         <v-toolbar-title v-text="title"/>
       </router-link>
