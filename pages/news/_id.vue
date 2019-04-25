@@ -8,7 +8,7 @@ section .warning {
 @import '~/assets/css/markdown.css';
 
 .gallery-top {
-  height: 41%;
+  height: 500px;
   width: 100%;
 }
 
@@ -19,8 +19,12 @@ section .warning {
 img {
   max-height: 500px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 </style>
 
@@ -62,7 +66,7 @@ export default {
     return {
       newsDoesnotExist: 'К сожалению, заданной новости не существует.',
       swiperOption: {
-        loop: false,
+        loop: true,
         pagination: {
           el: '.swiper-pagination'
         },
