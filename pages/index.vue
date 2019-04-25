@@ -141,7 +141,7 @@ img {
       :to="link"
       depressed
       large
-      color="rgb(21, 101, 192)"
+      color="primary"
       class="v-btn--size"
     >{{ msg }}</v-btn>
   </v-app>

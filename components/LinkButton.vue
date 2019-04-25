@@ -32,7 +32,7 @@
     :target="target"
     depressed
     large
-    color="rgb(21, 101, 192)"
+    color="primary"
     class="v-btn--size v-btn__text--white-space"
   >{{ msg }}</v-btn>
 </template>

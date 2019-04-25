@@ -266,7 +266,7 @@
 
     <v-toolbar
       :clipped-left="clipped"
-      color="blue darken-3"
+      color="#18224B"
       :extended="this.$vuetify.breakpoint.name === 'md' ? true : false"
       app
     >
