@@ -31,7 +31,7 @@ h2 {
                 <v-card-title></v-card-title>
                 <v-data-table
                   :headers="headersEducode"
-                  :items="cabs[i]"
+                  :items="item.cabs"
                   expand
                   class="elevation-2"
                   rows-per-page-text="Записей на странице"
@@ -207,7 +207,6 @@ export default {
       purposelibrErr: 'objects/purposelibrErr',
       purposeeios: 'objects/purposeeios',
       purposeeiosErr: 'objects/purposeeiosErr',
-      cabs: 'objects/cabs',
       errMessage: 'helpers/errMessage'
     })
   }
