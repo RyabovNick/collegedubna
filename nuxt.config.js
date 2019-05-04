@@ -26,7 +26,7 @@ module.exports = {
 
   server: {
     host: '0.0.0.0',
-    port: 3001
+    port: 8431
   },
 
   /*
@@ -59,7 +59,7 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'http://159.93.167.103:3000/api/'
+    baseURL: 'http://95.216.203.254:8430/api/'
     // See https://github.com/nuxt-community/axios-module#options
   },
 

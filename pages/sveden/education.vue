@@ -48,149 +48,141 @@ h2 {
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
     <section v-else>
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-card>
-            <v-card-title v-if="eduop.length > 5">
-              <v-text-field
-                v-model="searchEduop"
-                append-icon="search"
-                label="Поиск"
-                single-line
-                hide-details
-              ></v-text-field>
-            </v-card-title>
-            <v-data-table
-              :headers="headersEduop"
-              :items="eduop"
-              :search="searchEduop"
-              :expand="expand"
-              item-key="id"
-              class="elevation-2 pointer"
-              rows-per-page-text="Записей на странице"
-            >
-              <template v-slot:items="props">
-                <tr @click="props.expanded = !props.expanded">
-                  <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
-                  <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
-                  <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>
-                  <td itemprop="eduForm" class="text-xs-center">{{ props.item.eduForm }}</td>
-                  <td itemprop="eduYear" class="text-xs-center">{{ props.item.year }}</td>
-                  <td itemprop="eduPr" class="text-xs-center">{{ props.item.eduPr }}</td>
-                </tr>
-              </template>
-              <template v-slot:expand="props">
-                <v-card flat>
-                  <v-card-text itemprop="opMain">
-                    <p>Описание образовательной программы</p>
-                    <p>
-                      <a :href="`/files/${props.item.opMain}`" target="_blank">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/open.svg"
-                          alt="Открыть"
-                          title="Открыть в новом окне"
-                        >
-                      </a>
-                      <a :href="`/files/${props.item.opMain}`" download target="_self">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/download.svg"
-                          alt="Скачать"
-                          title="Скачать"
-                        >
-                      </a>
-                    </p>
-                  </v-card-text>
-                  <v-card-text v-if="props.item.educationPlan !== null" itemprop="educationPlan">
-                    <p>Учебный план</p>
-                    <p>
-                      <a :href="`/files/${props.item.educationPlan}`" target="_blank">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/open.svg"
-                          alt="Открыть"
-                          title="Открыть в новом окне"
-                        >
-                      </a>
-                      <a :href="`/files/${props.item.educationPlan}`" download target="_self">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/download.svg"
-                          alt="Скачать"
-                          title="Скачать"
-                        >
-                      </a>
-                    </p>
-                  </v-card-text>
-                  <v-card-text
-                    v-if="props.item.educationAnnotation !== null"
-                    itemprop="educationAnnotation"
-                  >
-                    <p>Аннотации к рабочим программам дисциплин</p>
-                    <p>
-                      <a :href="`/files/${props.item.educationAnnotation}`" download target="_self">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/download.svg"
-                          alt="Скачать"
-                          title="Скачать"
-                        >
-                      </a>
-                    </p>
-                  </v-card-text>
-                  <v-card-text
-                    v-if="props.item.educationShedule !== null"
-                    itemprop="educationShedule"
-                  >
-                    <p>Календарный учебный график</p>
-                    <p>
-                      <a :href="`/files/${props.item.educationShedule}`" target="_blank">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/open.svg"
-                          alt="Открыть"
-                          title="Открыть в новом окне"
-                        >
-                      </a>
-                      <a :href="`/files/${props.item.educationShedule}`" download target="_self">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/download.svg"
-                          alt="Скачать"
-                          title="Скачать"
-                        >
-                      </a>
-                    </p>
-                  </v-card-text>
-                  <v-card-text v-if="props.item.methodology !== null" itemprop="methodologyedu">
-                    <p>Методические и иные документы</p>
-                    <p>
-                      <a :href="`/files/${props.item.methodology}`" target="_blank">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/open.svg"
-                          alt="Открыть"
-                          title="Открыть в новом окне"
-                        >
-                      </a>
-                      <a :href="`/files/${props.item.methodology}`" download target="_self">
-                        <img
-                          class="icon-size"
-                          src="@/assets/icons/download.svg"
-                          alt="Скачать"
-                          title="Скачать"
-                        >
-                      </a>
-                    </p>
-                  </v-card-text>
-                </v-card>
-              </template>
-            </v-data-table>
-          </v-card>
-        </template>
-        <span>Нажмите для просмотра прикрепленных документов</span>
-      </v-tooltip>
+      <v-card>
+        <v-card-title v-if="eduop.length > 5">
+          <v-text-field
+            v-model="searchEduop"
+            append-icon="search"
+            label="Поиск"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headersEduop"
+          :items="eduop"
+          :search="searchEduop"
+          :expand="expand"
+          item-key="id"
+          class="elevation-2 pointer"
+          rows-per-page-text="Записей на странице"
+        >
+          <template v-slot:items="props">
+            <tr @click="props.expanded = !props.expanded">
+              <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
+              <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
+              <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>
+              <td itemprop="eduForm" class="text-xs-center">{{ props.item.eduForm }}</td>
+              <td itemprop="eduYear" class="text-xs-center">{{ props.item.year }}</td>
+              <td itemprop="eduPr" class="text-xs-center">{{ props.item.eduPr }}</td>
+            </tr>
+          </template>
+          <template v-slot:expand="props">
+            <v-card flat>
+              <v-card-text itemprop="opMain">
+                <p>Описание образовательной программы</p>
+                <p>
+                  <a :href="`/files/${props.item.opMain}`" target="_blank">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/open.svg"
+                      alt="Открыть"
+                      title="Открыть в новом окне"
+                    >
+                  </a>
+                  <a :href="`/files/${props.item.opMain}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+              <v-card-text v-if="props.item.educationPlan !== null" itemprop="educationPlan">
+                <p>Учебный план</p>
+                <p>
+                  <a :href="`/files/${props.item.educationPlan}`" target="_blank">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/open.svg"
+                      alt="Открыть"
+                      title="Открыть в новом окне"
+                    >
+                  </a>
+                  <a :href="`/files/${props.item.educationPlan}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+              <v-card-text
+                v-if="props.item.educationAnnotation !== null"
+                itemprop="educationAnnotation"
+              >
+                <p>Аннотации к рабочим программам дисциплин</p>
+                <p>
+                  <a :href="`/files/${props.item.educationAnnotation}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+              <v-card-text v-if="props.item.educationShedule !== null" itemprop="educationShedule">
+                <p>Календарный учебный график</p>
+                <p>
+                  <a :href="`/files/${props.item.educationShedule}`" target="_blank">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/open.svg"
+                      alt="Открыть"
+                      title="Открыть в новом окне"
+                    >
+                  </a>
+                  <a :href="`/files/${props.item.educationShedule}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+              <v-card-text v-if="props.item.methodology !== null" itemprop="methodologyedu">
+                <p>Методические и иные документы</p>
+                <p>
+                  <a :href="`/files/${props.item.methodology}`" target="_blank">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/open.svg"
+                      alt="Открыть"
+                      title="Открыть в новом окне"
+                    >
+                  </a>
+                  <a :href="`/files/${props.item.methodology}`" download target="_self">
+                    <img
+                      class="icon-size"
+                      src="@/assets/icons/download.svg"
+                      alt="Скачать"
+                      title="Скачать"
+                    >
+                  </a>
+                </p>
+              </v-card-text>
+            </v-card>
+          </template>
+        </v-data-table>
+      </v-card>
     </section>
     <h2>Информация о сроке действия государственной аккредитации образовательной программы, о языках, на которых осуществляется образование (обучение)</h2>
     <section v-if="eduaccredErr">
