@@ -18,6 +18,11 @@ table.v-table {
 .pointer td {
   cursor: pointer;
 }
+
+.help {
+  text-align: center;
+  font-size: 0.8em;
+}
 </style>
 
 <template>
@@ -43,6 +48,8 @@ table.v-table {
     </section>
 
     <h1>Педагогический состав</h1>
+    <span class="help">* нажмите на преподавателя для просмотра дополнительной информации</span>
+
     <section v-if="teachersErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
@@ -108,7 +115,7 @@ table.v-table {
               >Записей {{ props.pageStart }} - {{ props.pageStop }} из {{ props.itemsLength }}</template>
             </v-data-table>
           </template>
-          <span>Нажмите для просмотра прикрепленных документов</span>
+          <span>Нажмите для просмотра информации</span>
         </v-tooltip>
       </v-card>
     </section>

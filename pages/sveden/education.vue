@@ -38,12 +38,18 @@ h2 {
 .v-card__text p:first-child {
   font-weight: bold;
 }
+
+.help {
+  text-align: center;
+  font-size: 0.8em;
+}
 </style>
 
 <template>
   <v-app>
     <h1>Образование</h1>
     <h2>Информация по образовательным программам</h2>
+    <span class="help">* нажмите на образовательную программу для просмотра прикреплённых документов</span>
     <section v-if="eduopErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
     </section>
@@ -69,8 +75,8 @@ h2 {
               class="elevation-2 pointer"
               rows-per-page-text="Записей на странице"
             >
-              <template v-slot:items="props">
-                <tr @click="props.expanded = !props.expanded">
+              <template slot="items" slot-scope="props">
+                <tr v-on="on" @click="props.expanded = !props.expanded">
                   <td itemprop="eduCode" class="text-xs-left">{{ props.item.eduCode }}</td>
                   <td itemprop="eduName" class="text-xs-center">{{ props.item.eduName }}</td>
                   <td itemprop="eduLevel" class="text-xs-center">{{ props.item.eduLevel }}</td>

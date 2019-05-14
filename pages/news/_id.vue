@@ -10,6 +10,7 @@ section .warning {
 .gallery-top {
   height: 500px;
   width: 100%;
+  padding-top: 2em;
 }
 
 .swiper-slide {

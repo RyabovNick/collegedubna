@@ -21,7 +21,7 @@
 }
 
 .md-helper >>> h4 {
-  font-size: 1em;
+  font-size: 1.2em;
   text-align: center;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
@@ -30,6 +30,11 @@
 .md-helper >>> h5 {
   font-size: 1.25em;
   text-align: left;
+}
+
+.md-helper >>> h6 {
+  font-size: 1.25em;
+  text-align: center;
 }
 
 .md-helper >>> p {
@@ -83,6 +88,11 @@ ul {
 .md-helper >>> li {
   font-size: 16px;
   line-height: 1.5;
+}
+
+.md-helper >>> a {
+  color: rgb(100, 179, 233);
+  font-style: italic;
 }
 
 .md-helper >>> iframe {
