@@ -114,7 +114,7 @@ img {
     </section>
     <section v-else>
       <v-layout row wrap>
-        <v-flex lg4 md6 sm6 xs12 v-for="news in lastNews" :key="news.id">
+        <v-flex lg6 md6 sm6 xs12 v-for="news in lastNews" :key="news.id">
           <router-link :to="`/news/${news.id}`">
             <v-card hover height="97.1%">
               <v-img :src="`/files/${news.logo}`" height="18.429em"></v-img>
@@ -135,15 +135,7 @@ img {
         </v-flex>
       </v-layout>
     </section>
-    <v-btn
-      outline
-      nuxt
-      :to="link"
-      depressed
-      large
-      color="primary"
-      class="v-btn--size"
-    >{{ msg }}</v-btn>
+    <v-btn outline nuxt :to="link" depressed large color="primary" class="v-btn--size">{{ msg }}</v-btn>
   </v-app>
 </template>
 

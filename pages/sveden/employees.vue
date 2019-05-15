@@ -48,7 +48,7 @@ table.v-table {
     </section>
 
     <h1>Педагогический состав</h1>
-    <span class="help">* нажмите на преподавателя для просмотра дополнительной информации</span>
+    <span class="help">* нажмите на ФИО преподавателя для просмотра дополнительной информации</span>
 
     <section v-if="teachersErr">
       <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
