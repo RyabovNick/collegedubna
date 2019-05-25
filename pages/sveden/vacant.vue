@@ -24,7 +24,12 @@ h2 {
   <v-app>
     <h1>Вакантные места</h1>
     <section v-if="vacantErr">
-      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ errMessage }}</v-alert>
     </section>
     <section v-else>
       <div v-if="loading">Загрузка...</div>
@@ -44,6 +49,7 @@ h2 {
           expand
           :search="search"
           class="elevation-2"
+          rows-per-page-text="Записей на странице"
         >
           <template slot="headers" slot-scope="props">
             <tr>
@@ -66,13 +72,31 @@ h2 {
           <template slot="items" slot-scope="props">
             <td itemprop="eduCode" class="text-xs-left">{{ props.item.code }}</td>
             <td itemprop="eduName" class="text-xs-center">{{ props.item.name }}</td>
-            <td itemprop="eduLevel" class="text-xs-center">{{ props.item.level }}</td>
-            <td itemprop="eduCourse" class="text-xs-center">{{ props.item.course }}</td>
+            <td
+              itemprop="eduLevel"
+              class="text-xs-center"
+            >{{ props.item.level }}</td>
+            <td
+              itemprop="eduCourse"
+              class="text-xs-center"
+            >{{ props.item.course }}</td>
             <td itemprop="eduForm" class="text-xs-center">{{ props.item.form }}</td>
-            <td itemprop="numberBFVacant" class="text-xs-center">{{ props.item.numberBFVacant }}</td>
-            <td itemprop="numberBRVacant" class="text-xs-center">{{ props.item.numberBRVacant }}</td>
-            <td itemprop="numberBMVacant" class="text-xs-center">{{ props.item.numberBMVacant }}</td>
-            <td itemprop="numberPVacant" class="text-xs-center">{{ props.item.numberPVacant }}</td>
+            <td
+              itemprop="numberBFVacant"
+              class="text-xs-center"
+            >{{ props.item.numberBFVacant }}</td>
+            <td
+              itemprop="numberBRVacant"
+              class="text-xs-center"
+            >{{ props.item.numberBRVacant }}</td>
+            <td
+              itemprop="numberBMVacant"
+              class="text-xs-center"
+            >{{ props.item.numberBMVacant }}</td>
+            <td
+              itemprop="numberPVacant"
+              class="text-xs-center"
+            >{{ props.item.numberPVacant }}</td>
           </template>
         </v-data-table>
       </v-card>

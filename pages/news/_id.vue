@@ -18,7 +18,7 @@ section .warning {
 }
 
 img {
-  max-height: 500px;
+  max-height: 470px;
   display: block;
   max-width: 100%;
   top: 0;
@@ -33,7 +33,12 @@ img {
 <template>
   <v-app>
     <section v-if="newsErr">
-      <v-alert :value="true" color="error" icon="warning" outline>{{ errMessage }}</v-alert>
+      <v-alert
+        :value="true"
+        color="error"
+        icon="warning"
+        outline
+      >{{ errMessage }}</v-alert>
     </section>
     <section v-else-if="newsDoesNotExist">
       <v-alert :value="true" type="warning">{{ newsDoesnotExist }}</v-alert>
@@ -41,7 +46,11 @@ img {
     <section v-else>
       <h1>{{news.title}}</h1>
       <vue-markdown class="md-helper">{{news.content}}</vue-markdown>
-      <div v-if="newsPhotos.length !== 0" v-swiper:mySwiper="swiperOption" class="gallery-top">
+      <div
+        v-if="newsPhotos.length !== 0"
+        v-swiper:mySwiper="swiperOption"
+        class="gallery-top"
+      >
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(photo, i) in newsPhotos" :key="i">
             <img :src="`/files/${photo.link}`">

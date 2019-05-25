@@ -68,11 +68,31 @@
   } */
 }
 
-/* @media only screen and (max-width: 960px) {
+@media only screen and (max-width: 410px) {
+  .special-btn {
+    display: none;
+  }
+
+  .toolbar__items {
+    margin-right: 1.8em !important;
+  }
+}
+
+@media only screen and (max-width: 340px) {
   .headerlogo {
     display: none;
   }
-} */
+
+  .toolbar__items {
+    margin-right: 1.6em !important;
+  }
+}
+
+@media only screen and (max-width: 260px) {
+  .toolbar__items {
+    display: none !important;
+  }
+}
 
 .hidden-sm-and-down {
   display: inline-block;
@@ -299,12 +319,17 @@
         </template>
 
         <v-list>
-          <v-list-tile v-for="(item, i) in itemsMenu" :key="i" :to="item.link" nuxt>
+          <v-list-tile
+            v-for="(item, i) in itemsMenu"
+            :key="i"
+            :to="item.link"
+            nuxt
+          >
             <v-list-tile-title class="menu--style--title" v-text="item.text"></v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
-      <v-btn icon large to="/special">
+      <v-btn icon large to="/special" class="special-btn">
         <v-icon title="Версия для слабовидящих">remove_red_eye</v-icon>
       </v-btn>
     </v-toolbar>
