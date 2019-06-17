@@ -319,12 +319,7 @@
         </template>
 
         <v-list>
-          <v-list-tile
-            v-for="(item, i) in itemsMenu"
-            :key="i"
-            :to="item.link"
-            nuxt
-          >
+          <v-list-tile v-for="(item, i) in itemsMenu" :key="i" :to="item.link" nuxt>
             <v-list-tile-title class="menu--style--title" v-text="item.text"></v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -436,6 +431,11 @@ export default {
               link: '/sveden/vacant'
             }
           ]
+        },
+        {
+          icon: 'grade',
+          text: 'Рейтинг выпускников',
+          link: '/rating'
         },
         {
           icon: 'accessible',
