@@ -290,12 +290,12 @@
       :extended="this.$vuetify.breakpoint.name === 'md' ? true : false"
       app
     >
-      <v-toolbar-side-icon @click="drawer = !drawer"/>
+      <v-toolbar-side-icon @click="drawer = !drawer" />
       <router-link to="/">
-        <img class="headerlogo" src="/image/headerlogowhite.png">
+        <img class="headerlogo" src="/image/headerlogowhite.png" />
       </router-link>
       <router-link to="/">
-        <v-toolbar-title v-text="title"/>
+        <v-toolbar-title v-text="title" />
       </router-link>
       <v-spacer></v-spacer>
       <div v-for="(item, index) in toolbar" :key="index" class="toolbar__items">
@@ -330,7 +330,7 @@
     </v-toolbar>
     <v-content>
       <v-container>
-        <nuxt/>
+        <nuxt />
       </v-container>
     </v-content>
     <v-footer height="auto">
@@ -436,6 +436,11 @@ export default {
           icon: 'grade',
           text: 'Рейтинг выпускников',
           link: '/rating'
+        },
+        {
+          icon: 'schedule',
+          text: 'Расписание',
+          link: '/schedule'
         },
         {
           icon: 'accessible',
