@@ -59,7 +59,8 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'https://college.uni-dubna.ru:8443/api/'
+    // baseURL: 'https://college.uni-dubna.ru:8443/api/'
+    baseURL: 'http://localhost:3000/api/'
     // See https://github.com/nuxt-community/axios-module#options
   },
 

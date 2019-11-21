@@ -85,6 +85,37 @@ export const state = () => ({
       name: 'Демонстрационный экзамен',
       content: '',
       err: false
+    },
+    {
+      id: 15,
+      name:
+        'Локальные нормативные акты в сфере обеспечения информационной безопасности обучающихся',
+      content: '',
+      err: false
+    },
+    {
+      id: 16,
+      name: 'Нормативное регулирование',
+      content: '',
+      err: false
+    },
+    {
+      id: 17,
+      name: 'Педагогическим работникам',
+      content: '',
+      err: false
+    },
+    {
+      id: 18,
+      name: 'Обучающимся',
+      content: '',
+      err: false
+    },
+    {
+      id: 19,
+      name: 'Родителям (законным представителям) обучающихся',
+      content: '',
+      err: false
     }
   ],
   pageErr: false

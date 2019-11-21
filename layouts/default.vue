@@ -467,6 +467,32 @@ export default {
         {
           icon: 'computer',
           'icon-alt': 'computer',
+          text: 'Информационная безопасность',
+          model: false,
+          children: [
+            {
+              text:
+                'Локальные нормативные акты в сфере обеспечения информационной безопасности обучающихся',
+              link: '/security/acts'
+            },
+            {
+              text: 'Нормативное регулирование',
+              link: '/security/regulation'
+            },
+            {
+              text: 'Педагогическим работникам',
+              link: '/security/teaching_staff'
+            },
+            { text: 'Обучающимся', link: '/security/students' },
+            {
+              text: 'Родителям (законным представителям) обучающихся',
+              link: '/security/parents'
+            }
+          ]
+        },
+        {
+          icon: 'computer',
+          'icon-alt': 'computer',
           text: 'Конкурсы и олимпиады',
           model: false,
           children: [
