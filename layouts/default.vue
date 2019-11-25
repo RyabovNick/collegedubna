@@ -227,7 +227,7 @@
       :clipped="clipped"
       fixed
       app
-      width="355"
+      width="365"
       disable-resize-watcher
     >
       <v-list dense>
@@ -435,6 +435,7 @@ export default {
         {
           icon: 'grade',
           text: 'Рейтинг выпускников',
+
           link: '/rating'
         },
         {
@@ -469,7 +470,7 @@ export default {
           'icon-alt': 'computer',
           text: 'Информационная безопасность',
           model: false,
-          children: [            
+          children: [
             { text: 'Обучающимся', link: '/security/students' },
             {
               text: 'Родителям (законным представителям) обучающихся',

@@ -1,25 +1,36 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const pkg = require('./package')
+require('dotenv').config()
 
 module.exports = {
   mode: 'spa',
 
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: 'Колледж Университета Дубна',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+    meta: [{
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: pkg.description
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    link: [{
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
       }
     ]
   },
@@ -30,13 +41,15 @@ module.exports = {
   },
 
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#000' },
+   ** Customize the progress-bar color
+   */
+  loading: {
+    color: '#000'
+  },
 
   /*
-  ** Global CSS
-  */
+   ** Global CSS
+   */
   css: [
     '~/assets/style/app.styl',
     '~/assets/main.css',
@@ -44,28 +57,28 @@ module.exports = {
   ],
 
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: ['@/plugins/vuetify', '@/plugins/formatDate', '@/plugins/swiper.js'],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios'
   ],
   /*
-  ** Axios module configuration
-  */
+   ** Axios module configuration
+   */
   axios: {
-    baseURL: 'https://college.uni-dubna.ru:8443/api/'
+    baseURL: process.env.API_ADDR
     // See https://github.com/nuxt-community/axios-module#options
   },
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     transpile: ['vuetify/lib'],
     plugins: [new VuetifyLoaderPlugin()],
@@ -76,8 +89,8 @@ module.exports = {
     },
 
     /*
-    ** You can extend webpack config here
-    */
+     ** You can extend webpack config here
+     */
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

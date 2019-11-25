@@ -54,7 +54,7 @@ table.v-datatable.v-table thead th {
 }
 
 @media (-webkit-min-device-pixel-ratio: 2.1),
-  only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 1.5) {
+only screen and (min-device-width: 320px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 1.5) {
   .application--wrap h1 {
     font-size: 1.5em;
   }
@@ -72,4 +72,11 @@ table.v-datatable.v-table thead th {
   .container {
     max-width: 1185px !important;
   }
+}
+
+.v-list__group__items {
+  position: relative;
+  padding: 0;
+  transition: inherit;
+  padding-bottom: 20px !important;
 }
