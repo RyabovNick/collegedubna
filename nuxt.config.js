@@ -72,7 +72,9 @@ module.exports = {
    ** Axios module configuration
    */
   axios: {
-    baseURL: process.env.API_ADDR
+    baseURL: process.env.NODE_ENV === "development" ?
+      "http://localhost:3000/api/" :
+      "https://college.uni-dubna.ru:8443/api/"
     // See https://github.com/nuxt-community/axios-module#options
   },
 
